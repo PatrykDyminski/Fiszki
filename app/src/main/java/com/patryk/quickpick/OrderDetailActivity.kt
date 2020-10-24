@@ -10,13 +10,13 @@ import androidx.appcompat.widget.Toolbar
  * An activity representing a single Item detail screen. This
  * activity is only used on narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
- * in a [ItemListActivity].
+ * in a [OrderListActivity].
  */
-class ItemDetailActivity : AppCompatActivity() {
+class OrderDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_item_detail)
+        setContentView(R.layout.activity_order_detail)
 
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
@@ -56,7 +56,7 @@ class ItemDetailActivity : AppCompatActivity() {
                     //
                     // http://developer.android.com/design/patterns/navigation.html#up-vs-back
 
-                    navigateUpTo(Intent(this, ItemListActivity::class.java))
+                    navigateUpTo(Intent(this, OrderListActivity::class.java))
                     true
                 }
                 else -> super.onOptionsItemSelected(item)
