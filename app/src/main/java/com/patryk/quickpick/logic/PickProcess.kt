@@ -9,7 +9,7 @@ class PickProcess(order: Order) {
     private var pendingItems: MutableList<Item> = mutableListOf<Item>()
     private var completedItems: MutableList<Item> = mutableListOf<Item>()
     private var failedItems: MutableList<Item> = mutableListOf<Item>()
-    private lateinit var currentItem: Item
+    private var currentItem: Item
 
     init{
         pendingItems.addAll(order.items)
