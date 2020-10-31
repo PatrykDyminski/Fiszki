@@ -84,7 +84,7 @@ class OrderListActivity : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.order_list_content, parent, false)
+                    .inflate(R.layout.content_order_list, parent, false)
             return ViewHolder(view)
         }
 

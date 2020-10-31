@@ -47,6 +47,10 @@ class OrderDetailActivity : AppCompatActivity() {
         }
     }
 
+    public fun fBack(){
+        navigateUpTo(Intent(this, OrderListActivity::class.java))
+    }
+
     override fun onOptionsItemSelected(item: MenuItem) =
             when (item.itemId) {
                 android.R.id.home -> {

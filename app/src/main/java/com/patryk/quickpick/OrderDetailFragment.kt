@@ -1,12 +1,14 @@
 package com.patryk.quickpick
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.patryk.quickpick.data.DemoDataContent
@@ -37,11 +39,13 @@ class OrderDetailFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater,
-                              container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
-        val rootView = inflater.inflate(R.layout.order_detail, container, false)
+        val rootView = inflater.inflate(R.layout.fragment_order_detail, container, false)
 
         rootView.findViewById<TextView>(R.id.pageTitle).text = "Order " + order.id + " - " + order.items.size.toString() + " to pick"
 
@@ -53,6 +57,19 @@ class OrderDetailFragment : Fragment() {
             adapter = viewAdapter
         }
 
+        val startPickingButton: Button = rootView.findViewById(R.id.start_picking)
+        startPickingButton.setOnClickListener {
+            val intent = Intent(context, PickProcessActivity::class.java).apply {
+                putExtra(ARG_ORDER_ID, order.id)
+            }
+            context?.startActivity(intent)
+        }
+
+        val backToListButton: Button = rootView.findViewById(R.id.back_to_list)
+        backToListButton.setOnClickListener {
+            (activity as OrderDetailActivity?)?.fBack()
+        }
+
         return rootView
     }
 
@@ -60,8 +77,8 @@ class OrderDetailFragment : Fragment() {
         const val ARG_ORDER_ID = "order_id"
     }
 
-    class MyAdapter(private val items: List<Item>) :
-            RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+    class MyAdapter(private val items: List<Item>)
+        : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val name: TextView = view.findViewById(R.id.item_name)
@@ -72,7 +89,7 @@ class OrderDetailFragment : Fragment() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.ViewHolder {
 
             val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_in_order, parent, false) as LinearLayout
+                    .inflate(R.layout.content_item_in_order, parent, false) as LinearLayout
 
             return ViewHolder(view)
         }

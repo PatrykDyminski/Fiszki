@@ -8,19 +8,7 @@
     tools:context=".OrderDetailActivity"
     tools:ignore="MergeRootFrame">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/Theme.QuickPick.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:popupTheme="@style/Theme.QuickPick.PopupOverlay" />
-
-    </com.google.android.material.appbar.AppBarLayout>
+    <include layout="@layout/component_appbar"/>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/item_detail_container"

@@ -5,16 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".OrderListActivity">
+    tools:context=".PickProcessActivity"
+    tools:ignore="MergeRootFrame">
 
     <include layout="@layout/component_appbar"/>
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <include layout="@layout/order_list" />
-    </FrameLayout>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
