@@ -21,6 +21,7 @@ import com.patryk.quickpick.data.Order
  * in two-pane mode (on tablets) or a [OrderDetailActivity]
  * on handsets.
  */
+@ExperimentalStdlibApi
 class OrderDetailFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView

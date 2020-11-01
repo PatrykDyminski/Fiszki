@@ -7,6 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import com.patryk.quickpick.ui.pickprocess.PickProcessFragment
 
+@ExperimentalStdlibApi
 class PickProcessActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,8 +19,16 @@ class PickProcessActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         if (savedInstanceState == null) {
+
+            val fragment = PickProcessFragment.newInstance().apply {
+                arguments = Bundle().apply {
+                    putString(OrderDetailFragment.ARG_ORDER_ID,
+                            intent.getStringExtra(OrderDetailFragment.ARG_ORDER_ID))
+                }
+            }
+
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, PickProcessFragment.newInstance())
+                    .replace(R.id.container, fragment)
                     .commitNow()
         }
     }

@@ -53,6 +53,7 @@ class OrderListActivity : AppCompatActivity() {
         recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DemoDataContent.ORDERS, twoPane)
     }
 
+    @OptIn(ExperimentalStdlibApi::class)
     class SimpleItemRecyclerViewAdapter(private val parentActivity: OrderListActivity,
                                         private val values: List<Order>,
                                         private val twoPane: Boolean) :

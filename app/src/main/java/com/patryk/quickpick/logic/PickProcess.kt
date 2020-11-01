@@ -11,9 +11,19 @@ class PickProcess(order: Order) {
     private var failedItems: MutableList<Item> = mutableListOf<Item>()
     private var currentItem: Item
 
+    private var isProcessFinished: Boolean = false
+
     init{
         pendingItems.addAll(order.items)
         currentItem = pendingItems.removeFirst()
+    }
+
+    fun getCurrentlyProcessedItem() : Item{
+        return currentItem
+    }
+
+    fun getIsProcessFinished() : Boolean{
+        return isProcessFinished
     }
 
     fun pickItem(){
@@ -34,7 +44,7 @@ class PickProcess(order: Order) {
         }
     }
 
-    fun endProcess(){
-
+    private fun endProcess(){
+        isProcessFinished = true
     }
 }

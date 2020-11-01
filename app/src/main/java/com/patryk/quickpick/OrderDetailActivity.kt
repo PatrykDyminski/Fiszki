@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
  * item details are presented side-by-side with a list of items
  * in a [OrderListActivity].
  */
+@ExperimentalStdlibApi
 class OrderDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

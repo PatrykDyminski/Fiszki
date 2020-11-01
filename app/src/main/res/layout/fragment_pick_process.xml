@@ -8,7 +8,7 @@
     tools:context=".ui.pickprocess.PickProcessFragment">
 
     <TextView
-        android:id="@+id/itemName"
+        android:id="@+id/itemNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -27,7 +27,7 @@
         android:layout_marginTop="16dp"
         android:text="barcode:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemName" />
+        app:layout_constraintTop_toBottomOf="@+id/itemNameLabel" />
 
     <TextView
         android:id="@+id/categoryLabel"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/weightLabel" />
 
     <Button
-        android:id="@+id/PickedButton"
+        android:id="@+id/pickSuccessButton"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
@@ -78,7 +78,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="#FF5722"
         android:text="Problem with item"
-        app:layout_constraintBottom_toTopOf="@+id/PickedButton"
+        app:layout_constraintBottom_toTopOf="@+id/pickSuccessButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
