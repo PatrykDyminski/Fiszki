@@ -1,9 +1,17 @@
 package com.patryk.quickpick.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
-data class Dimensions(val x: Float, val y: Float, val z: Float)
+@Parcelize
+data class Dimensions(val x: Float, val y: Float, val z: Float) : Parcelable
 
-data class Item(val name: String, val category: String, val barcode: String, val mass: Float, val dimensions: Dimensions)
+@Parcelize
+data class Item(val name: String, val category: String, val barcode: String, val mass: Float, val dimensions: Dimensions) : Parcelable
 
-data class Order(val id: String, val placedDate: Date, val items: List<Item>)
+@Parcelize
+data class Order(val id: String, val placedDate: Date, val items: List<Item>) : Parcelable
+
+@Parcelize
+data class PickProcessSummary(val completedItems: List<Item>, val failedItems: List<Item>) : Parcelable

@@ -1,5 +1,6 @@
 package com.patryk.quickpick.ui.pickprocess
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,12 +9,13 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.patryk.quickpick.OrderDetailActivity
 import com.patryk.quickpick.OrderDetailFragment
+import com.patryk.quickpick.OrderSummaryActivity
 import com.patryk.quickpick.R
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Item
 import com.patryk.quickpick.data.Order
-
 
 @ExperimentalStdlibApi
 class PickProcessFragment : Fragment() {
@@ -45,7 +47,6 @@ class PickProcessFragment : Fragment() {
         val item = viewModel.getCurrentlyProcessedItem()
 
         setItem(item)
-
         assignButtons(view)
 
         return view
@@ -53,11 +54,6 @@ class PickProcessFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-
-//        viewModel.GetFirstProcessItem().let {
-//            //UI
-//        }
     }
 
     private fun assignButtons(view: View){
@@ -77,11 +73,19 @@ class PickProcessFragment : Fragment() {
 
     private fun handleNextItem(){
         if(viewModel.isProcessFinished()){
-
+            goToSummary()
         }else{
             val nextItem = viewModel.getCurrentlyProcessedItem()
             setItem(nextItem)
         }
+    }
+
+    private fun goToSummary() {
+        val summary = viewModel.getSummary()
+        val intent = Intent(context, OrderSummaryActivity::class.java).apply {
+            putExtra(ORDER_SUMMARY, summary)
+        }
+        context?.startActivity(intent)
     }
 
     private fun setItem(item: Item){
@@ -94,5 +98,7 @@ class PickProcessFragment : Fragment() {
 
     companion object {
         fun newInstance() = PickProcessFragment()
+
+        const val ORDER_SUMMARY = "completed"
     }
 }

@@ -17,4 +17,13 @@
         <include layout="@layout/order_list" />
     </FrameLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu"
+        android:layout_gravity="bottom"
+        />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

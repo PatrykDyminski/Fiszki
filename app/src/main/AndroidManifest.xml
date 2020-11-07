@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickPick">
         <activity
+            android:name=".OrderSummaryActivity"
+            android:theme="@style/Theme.QuickPick.NoActionBar">
+        </activity>
+        <activity
             android:name=".PickProcessActivity"
             android:label="Pick Process"
             android:theme="@style/Theme.QuickPick.NoActionBar">
@@ -20,7 +24,6 @@
             android:theme="@style/Theme.QuickPick.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,5 +37,4 @@
                 android:value="com.patryk.quickpick.OrderListActivity" />
         </activity>
     </application>
-
 </manifest>

@@ -2,6 +2,7 @@ package com.patryk.quickpick.logic
 
 import com.patryk.quickpick.data.Item
 import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.data.PickProcessSummary
 
 @ExperimentalStdlibApi
 class PickProcess(order: Order) {
@@ -20,6 +21,10 @@ class PickProcess(order: Order) {
 
     fun getCurrentlyProcessedItem() : Item{
         return currentItem
+    }
+
+    fun getPickingSummary(): PickProcessSummary {
+        return PickProcessSummary(completedItems, failedItems)
     }
 
     fun getIsProcessFinished() : Boolean{
