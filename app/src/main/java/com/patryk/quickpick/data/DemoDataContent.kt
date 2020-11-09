@@ -12,6 +12,7 @@ import java.util.HashMap
 object DemoDataContent {
 
     val ORDERS: MutableList<Order> = ArrayList()
+    val ITEMS: MutableList<Item> = ArrayList()
 
     val ORDERS_MAP: MutableMap<String, Order> = HashMap()
 
@@ -36,7 +37,9 @@ object DemoDataContent {
         var items = mutableListOf<Item>()
 
         for(i in 1..position){
-            items.add(Item("name:"+i.toString(), "SampleCategory", "brcd:"+i.toString(), 1f, Dimensions(1f,1f,1f)))
+            val item = Item("name:"+i.toString(), "SampleCategory", "brcd:"+i.toString(), 1f, Dimensions(1f,1f,1f))
+            items.add(item)
+            ITEMS.add(item)
         }
 
         return items

@@ -41,7 +41,8 @@ class OrderListActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.title = title
 
-        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
+        bottomNav = findViewById(R.id.bottomNav)
+        bottomNav.selectedItemId = R.id.home
         setBottomNav()
 
         if (findViewById<NestedScrollView>(R.id.item_detail_container) != null) {
