@@ -3,25 +3,26 @@ package com.patryk.quickpick.data
 import java.util.ArrayList
 import java.util.HashMap
 
-/**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- *
- * TODO: Replace all uses of this class before publishing your app.
- */
 object DemoDataContent {
 
     val ORDERS: MutableList<Order> = ArrayList()
+    val PAST_ORDERS: MutableList<PastOrder> = ArrayList()
     val ITEMS: MutableList<Item> = ArrayList()
 
     val ORDERS_MAP: MutableMap<String, Order> = HashMap()
 
-    private val COUNT = 20
+    private const val COUNT = 15
 
     init {
         for (i in 1..COUNT) {
             addOrder(createOrder(i))
         }
+
+        PAST_ORDERS.add(PastOrder(createOrder(16),true))
+        PAST_ORDERS.add(PastOrder(createOrder(17),true))
+        PAST_ORDERS.add(PastOrder(createOrder(18),false))
+        PAST_ORDERS.add(PastOrder(createOrder(19),true))
+        PAST_ORDERS.add(PastOrder(createOrder(20),false))
     }
 
     private fun addOrder(order: Order) {

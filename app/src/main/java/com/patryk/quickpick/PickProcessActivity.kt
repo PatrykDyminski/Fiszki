@@ -1,10 +1,10 @@
 package com.patryk.quickpick
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.ui.pickprocess.PickProcessFragment
 
 @ExperimentalStdlibApi

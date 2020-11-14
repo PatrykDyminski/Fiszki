@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
+import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
 class ItemListActivity : AppCompatActivity() {
 
@@ -51,6 +52,8 @@ class ItemListActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.completed -> {
+                        val intent = Intent(this@ItemListActivity, PastOrdersActivity::class.java)
+                        this@ItemListActivity.startActivity(intent)
                         return true
                     }
                     R.id.items -> {

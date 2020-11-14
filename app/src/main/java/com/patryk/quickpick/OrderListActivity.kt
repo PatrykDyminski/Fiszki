@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
 
 /**
@@ -65,6 +66,8 @@ class OrderListActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.completed -> {
+                        val intent = Intent(this@OrderListActivity, PastOrdersActivity::class.java)
+                        this@OrderListActivity.startActivity(intent)
                         return true
                     }
                     R.id.items -> {
@@ -87,8 +90,7 @@ class OrderListActivity : AppCompatActivity() {
         private val parentActivity: OrderListActivity,
         private val values: List<Order>,
         private val twoPane: Boolean
-    ) :
-            RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
+    ) : RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
 
         private val onClickListener: View.OnClickListener
 
@@ -134,8 +136,8 @@ class OrderListActivity : AppCompatActivity() {
         override fun getItemCount() = values.size
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val idView: TextView = view.findViewById(R.id.id_text)
-            val contentView: TextView = view.findViewById(R.id.content)
+            val idView: TextView = view.findViewById(R.id.order_name)
+            val contentView: TextView = view.findViewById(R.id.item_count)
         }
     }
 }

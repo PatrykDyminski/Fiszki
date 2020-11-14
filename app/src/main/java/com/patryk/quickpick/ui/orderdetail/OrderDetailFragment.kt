@@ -1,4 +1,4 @@
-package com.patryk.quickpick
+package com.patryk.quickpick.ui.orderdetail
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.patryk.quickpick.OrderDetailActivity
+import com.patryk.quickpick.PickProcessActivity
+import com.patryk.quickpick.R
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Item
 import com.patryk.quickpick.data.Order
@@ -87,7 +90,7 @@ class OrderDetailFragment : Fragment() {
             val category: TextView = view.findViewById(R.id.category)
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
             val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.content_item_in_order, parent, false) as LinearLayout
@@ -98,7 +101,7 @@ class OrderDetailFragment : Fragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = items[position]
             holder.name.text = item.name
-            holder.barcode.text = "placeholder"
+            holder.barcode.text = item.barcode
             holder.category.text = item.category
         }
 

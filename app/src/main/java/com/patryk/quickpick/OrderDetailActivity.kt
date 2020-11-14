@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
 /**
  * An activity representing a single Item detail screen. This
