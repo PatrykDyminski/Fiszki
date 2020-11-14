@@ -23,7 +23,7 @@ class PickProcessActivity : AppCompatActivity() {
             val fragment = PickProcessFragment.newInstance().apply {
                 arguments = Bundle().apply {
                     putString(OrderDetailFragment.ARG_ORDER_ID,
-                            intent.getStringExtra(OrderDetailFragment.ARG_ORDER_ID))
+                        intent.getStringExtra(OrderDetailFragment.ARG_ORDER_ID))
                 }
             }
 
@@ -36,13 +36,7 @@ class PickProcessActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem) =
         when (item.itemId) {
             android.R.id.home -> {
-                // This ID represents the Home or Up button. In the case of this
-                // activity, the Up button is shown. For
-                // more details, see the Navigation pattern on Android Design:
-                //
-                // http://developer.android.com/design/patterns/navigation.html#up-vs-back
                 onBackPressed()
-                //navigateUpTo(Intent(this, OrderDetailActivity::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

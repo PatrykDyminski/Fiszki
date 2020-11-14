@@ -2,9 +2,6 @@ package com.patryk.quickpick
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.ColorFilter
-import android.graphics.PorterDuff
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,14 +10,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.PastOrder
-import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
 class PastOrdersActivity : AppCompatActivity() {
 
