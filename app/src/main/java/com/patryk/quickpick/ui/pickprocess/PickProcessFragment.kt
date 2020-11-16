@@ -30,7 +30,7 @@ class PickProcessFragment : Fragment() {
 
         arguments?.let {
             if (it.containsKey(OrderDetailFragment.ARG_ORDER_ID)) {
-                order = DemoDataContent.ORDERS_MAP[it.getString(OrderDetailFragment.ARG_ORDER_ID)]!!
+                order = DemoDataContent.ORDERS.find { oo -> oo.id ==  it.getString(OrderDetailFragment.ARG_ORDER_ID) }!!
             }
         }
     }

@@ -1,20 +1,30 @@
 package com.patryk.quickpick
 
+import android.app.Activity
+import android.content.ContentResolver
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.data.Parser
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
+import java.io.File
 
 
 /**
@@ -27,10 +37,6 @@ import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
  */
 class OrderListActivity : AppCompatActivity() {
 
-    /**
-     * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
-     */
     private var twoPane: Boolean = false
     private lateinit var bottomNav : BottomNavigationView
 
@@ -46,6 +52,13 @@ class OrderListActivity : AppCompatActivity() {
         bottomNav.selectedItemId = R.id.home
         setBottomNav()
 
+        val fab: View = findViewById(R.id.fab)
+        fab.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "*/*"
+            startActivityForResult(intent, 1)
+        }
+
         if (findViewById<NestedScrollView>(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -55,6 +68,34 @@ class OrderListActivity : AppCompatActivity() {
         }
 
         setupRecyclerView(findViewById(R.id.item_list))
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            data?.data?.let {
+                val file = getFileFromUri(contentResolver, it, cacheDir)
+
+                val items = Parser.parseFile(file)
+
+                val text = items.size.toString()
+                val duration = Toast.LENGTH_SHORT
+
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+
+                findViewById<RecyclerView>(R.id.item_list).adapter?.notifyDataSetChanged();
+            }
+        }
+    }
+
+    private fun getFileFromUri(contentResolver: ContentResolver, uri: Uri, directory: File): File {
+        val file = File.createTempFile("yyyyyyyy", "eeeeeeeee", directory)
+        file.outputStream().use {
+            contentResolver.openInputStream(uri)?.copyTo(it)
+        }
+
+        return file
     }
 
     private fun setBottomNav() {

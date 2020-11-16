@@ -39,7 +39,7 @@ class OrderDetailFragment : Fragment() {
 
         arguments?.let {
             if (it.containsKey(ARG_ORDER_ID)) {
-                order = DemoDataContent.ORDERS_MAP[it.getString(ARG_ORDER_ID)]!!
+                order = DemoDataContent.ORDERS.find { oo -> oo.id ==  it.getString(ARG_ORDER_ID) }!!
             }
         }
     }

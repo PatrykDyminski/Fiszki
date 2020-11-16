@@ -5,11 +5,9 @@ import java.util.HashMap
 
 object DemoDataContent {
 
-    val ORDERS: MutableList<Order> = ArrayList()
+    var ORDERS: MutableList<Order> = ArrayList()
     val PAST_ORDERS: MutableList<PastOrder> = ArrayList()
-    val ITEMS: MutableList<Item> = ArrayList()
-
-    val ORDERS_MAP: MutableMap<String, Order> = HashMap()
+    var ITEMS: MutableList<Item> = ArrayList()
 
     private const val COUNT = 15
 
@@ -27,7 +25,6 @@ object DemoDataContent {
 
     private fun addOrder(order: Order) {
         ORDERS.add(order)
-        ORDERS_MAP[order.id] = order
     }
 
     private fun createOrder(position: Int): Order {
