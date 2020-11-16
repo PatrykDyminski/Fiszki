@@ -7,6 +7,8 @@ import com.patryk.quickpick.data.PickProcessSummary
 @ExperimentalStdlibApi
 class PickProcess(order: Order) {
 
+    private var _order : Order = order
+
     private var pendingItems: MutableList<Item> = mutableListOf<Item>()
     private var completedItems: MutableList<Item> = mutableListOf<Item>()
     private var failedItems: MutableList<Item> = mutableListOf<Item>()
@@ -24,7 +26,7 @@ class PickProcess(order: Order) {
     }
 
     fun getPickingSummary(): PickProcessSummary {
-        return PickProcessSummary(completedItems, failedItems)
+        return PickProcessSummary(completedItems, failedItems, _order)
     }
 
     fun getIsProcessFinished() : Boolean{

@@ -20,4 +20,4 @@ data class Order(val id: String, val placedDate: Date, val items: List<Item>) : 
 data class PastOrder(val order: Order, val isSuccess: Boolean) : Parcelable
 
 @Parcelize
-data class PickProcessSummary(val completedItems: List<Item>, val failedItems: List<Item>) : Parcelable
+data class PickProcessSummary(val completedItems: List<Item>, val failedItems: List<Item>, val order: Order) : Parcelable

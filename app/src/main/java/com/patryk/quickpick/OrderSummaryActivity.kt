@@ -1,11 +1,13 @@
 package com.patryk.quickpick
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.CompletedItem
+import com.patryk.quickpick.data.DemoDataContent
+import com.patryk.quickpick.data.PastOrder
 import com.patryk.quickpick.data.PickProcessSummary
+import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.ui.pickprocess.PickProcessFragment
 
 @ExperimentalStdlibApi
@@ -24,8 +29,6 @@ class OrderSummaryActivity : AppCompatActivity() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private lateinit var bottomNav : BottomNavigationView
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_summary)
@@ -34,8 +37,6 @@ class OrderSummaryActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val summary = intent.getParcelableExtra<PickProcessSummary>(PickProcessFragment.ORDER_SUMMARY)
-        Log.i("eee",summary?.failedItems?.size.toString())
-
         val items = ArrayList<CompletedItem>()
 
         summary?.completedItems?.forEach {
@@ -44,6 +45,16 @@ class OrderSummaryActivity : AppCompatActivity() {
 
         summary?.failedItems?.forEach {
             items.add(CompletedItem(it, false))
+        }
+
+        val finishButton: Button = findViewById(R.id.finishButton)
+        finishButton.setOnClickListener {
+
+            DemoDataContent.PAST_ORDERS.add(PastOrder(summary!!.order, summary.failedItems.isEmpty()))
+            DemoDataContent.ORDERS.remove(summary.order)
+
+            val intent = Intent(this, OrderListActivity::class.java)
+            startActivity(intent)
         }
 
         viewManager = LinearLayoutManager(this)
