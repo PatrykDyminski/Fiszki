@@ -38,7 +38,7 @@ object DemoDataContent {
         var items = mutableListOf<Item>()
 
         for(i in 1..position){
-            val item = Item("name:"+i.toString(), "SampleCategory", "brcd:"+i.toString(), 1f, Dimensions(1f,1f,1f))
+            val item = Item("name:"+i.toString(), "SampleCategory", "brcd:"+i.toString(), 20.2 * i, Dimensions(1f,1f,1f))
             items.add(item)
             ITEMS.add(item)
         }

@@ -17,6 +17,7 @@ import com.patryk.quickpick.R
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Item
 import com.patryk.quickpick.data.Order
+import kotlin.math.roundToInt
 
 /**
  * A fragment representing a single Item detail screen.
@@ -51,8 +52,6 @@ class OrderDetailFragment : Fragment() {
 
         val rootView = inflater.inflate(R.layout.fragment_order_detail, container, false)
 
-        rootView.findViewById<TextView>(R.id.pageTitle).text = "Order " + order.id + " - " + order.items.size.toString() + " to pick"
-
         viewManager = LinearLayoutManager(context)
         viewAdapter = MyAdapter(order.items)
         recyclerView = rootView.findViewById<RecyclerView>(R.id.itemsInOrderRecycler).apply {
@@ -61,6 +60,28 @@ class OrderDetailFragment : Fragment() {
             adapter = viewAdapter
         }
 
+        bindFields(rootView)
+        bindButtons(rootView)
+
+        return rootView
+    }
+
+    private fun bindFields(rootView: View){
+        rootView.findViewById<TextView>(R.id.pageTitle).text = "Order " + order.id + " - " + order.items.size.toString() + " to pick"
+
+        val weightText = rootView.findViewById<TextView>(R.id.weight)
+        val weight = order.items.sumByDouble { it.mass }
+        weightText.text = "total - " + weight.roundToInt().toString() + "g"
+
+        val dimensionsText = rootView.findViewById<TextView>(R.id.dimensions)
+        dimensionsText.text = "Box - 10 x 50 x 10 cm"
+
+        val boxText = rootView.findViewById<TextView>(R.id.box)
+        boxText.text = "Medium Box"
+
+    }
+
+    private fun bindButtons(rootView : View){
         val startPickingButton: Button = rootView.findViewById(R.id.start_picking)
         startPickingButton.setOnClickListener {
             val intent = Intent(context, PickProcessActivity::class.java).apply {
@@ -73,8 +94,6 @@ class OrderDetailFragment : Fragment() {
         backToListButton.setOnClickListener {
             (activity as OrderDetailActivity?)?.fBack()
         }
-
-        return rootView
     }
 
     companion object {

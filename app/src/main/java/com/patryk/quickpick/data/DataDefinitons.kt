@@ -8,7 +8,7 @@ import java.util.*
 data class Dimensions(val x: Float, val y: Float, val z: Float) : Parcelable
 
 @Parcelize
-data class Item(val name: String, val category: String, val barcode: String, val mass: Float, val dimensions: Dimensions) : Parcelable
+data class Item(val name: String, val category: String, val barcode: String, val mass: Double, val dimensions: Dimensions) : Parcelable
 
 @Parcelize
 data class CompletedItem(val item: Item, val isSuccess: Boolean) : Parcelable
