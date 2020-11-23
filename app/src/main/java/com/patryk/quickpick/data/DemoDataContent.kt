@@ -6,7 +6,7 @@ import java.util.HashMap
 object DemoDataContent {
 
     var ORDERS: MutableList<Order> = ArrayList()
-    val PAST_ORDERS: MutableList<PastOrder> = ArrayList()
+    var PAST_ORDERS: MutableList<PastOrder> = ArrayList()
     var ITEMS: MutableList<Item> = ArrayList()
 
     private const val COUNT = 15

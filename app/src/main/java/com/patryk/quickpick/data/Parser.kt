@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 
 object Parser {
 
-    fun parseFile(file: File): ArrayList<Item> {
+    fun parseFile(file: File): ArrayList<Order> {
         val content = file.readLines()
 
         val itemsStrings = ArrayList<String>()
@@ -31,11 +31,12 @@ object Parser {
 
         DemoDataContent.ITEMS = items
         DemoDataContent.ORDERS = orders
+        DemoDataContent.PAST_ORDERS = ArrayList()
 
-        return items
+        return orders
     }
 
-    fun populateItems(itemStrings: ArrayList<String>): ArrayList<Item> {
+    private fun populateItems(itemStrings: ArrayList<String>): ArrayList<Item> {
 
         val items = ArrayList<Item>()
 
@@ -47,7 +48,7 @@ object Parser {
         return items
     }
 
-    fun populateOrders(orderStrings: ArrayList<String>, items: List<Item>): ArrayList<Order> {
+    private fun populateOrders(orderStrings: ArrayList<String>, items: List<Item>): ArrayList<Order> {
 
         val orders = ArrayList<Order>()
 
@@ -79,7 +80,7 @@ object Parser {
             oitems.add(items.find { item -> item.barcode == itemstr }!!)
         }
 
-        val order = Order(oname, odate!!, items)
+        val order = Order(oname, odate!!, oitems)
 
         return order
     }

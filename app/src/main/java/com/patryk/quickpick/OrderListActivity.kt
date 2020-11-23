@@ -76,15 +76,14 @@ class OrderListActivity : AppCompatActivity() {
             data?.data?.let {
                 val file = getFileFromUri(contentResolver, it, cacheDir)
 
-                val items = Parser.parseFile(file)
+                Parser.parseFile(file)
 
-                val text = items.size.toString()
+                val text = "imported "+DemoDataContent.ORDERS.size.toString()+" orders"
                 val duration = Toast.LENGTH_SHORT
-
                 val toast = Toast.makeText(applicationContext, text, duration)
                 toast.show()
 
-                findViewById<RecyclerView>(R.id.item_list).adapter?.notifyDataSetChanged();
+                setupRecyclerView(findViewById(R.id.item_list))
             }
         }
     }
