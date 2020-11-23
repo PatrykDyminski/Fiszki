@@ -15,10 +15,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.patryk.quickpick.data.CompletedItem
-import com.patryk.quickpick.data.DemoDataContent
-import com.patryk.quickpick.data.PastOrder
-import com.patryk.quickpick.data.PickProcessSummary
+import com.patryk.quickpick.data.*
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.ui.pickprocess.PickProcessFragment
 
@@ -50,7 +47,15 @@ class OrderSummaryActivity : AppCompatActivity() {
         val finishButton: Button = findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
 
-            DemoDataContent.PAST_ORDERS.add(PastOrder(summary!!.order, summary.failedItems.isEmpty()))
+            val status: OrderStatus = if(summary!!.failedItems.isEmpty()){
+                OrderStatus.SUCCESS
+            }else if(summary.completedItems.isEmpty()){
+                OrderStatus.FAIL
+            }else{
+                OrderStatus.MIXED
+            }
+
+            DemoDataContent.PAST_ORDERS.add(PastOrder(summary.order, status))
             DemoDataContent.ORDERS.remove(summary.order)
 
             val intent = Intent(this, OrderListActivity::class.java)

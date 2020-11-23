@@ -16,11 +16,11 @@ object DemoDataContent {
             addOrder(createOrder(i))
         }
 
-        PAST_ORDERS.add(PastOrder(createOrder(16),true))
-        PAST_ORDERS.add(PastOrder(createOrder(17),true))
-        PAST_ORDERS.add(PastOrder(createOrder(18),false))
-        PAST_ORDERS.add(PastOrder(createOrder(19),true))
-        PAST_ORDERS.add(PastOrder(createOrder(20),false))
+        PAST_ORDERS.add(PastOrder(createOrder(16), OrderStatus.FAIL))
+        PAST_ORDERS.add(PastOrder(createOrder(17),OrderStatus.SUCCESS))
+        PAST_ORDERS.add(PastOrder(createOrder(18),OrderStatus.MIXED))
+        PAST_ORDERS.add(PastOrder(createOrder(19),OrderStatus.FAIL))
+        PAST_ORDERS.add(PastOrder(createOrder(20),OrderStatus.SUCCESS))
     }
 
     private fun addOrder(order: Order) {

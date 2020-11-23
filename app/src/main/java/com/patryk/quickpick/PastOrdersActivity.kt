@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
+import com.patryk.quickpick.data.OrderStatus
 import com.patryk.quickpick.data.PastOrder
 
 class PastOrdersActivity : AppCompatActivity() {
@@ -50,7 +51,7 @@ class PastOrdersActivity : AppCompatActivity() {
         : RecyclerView.Adapter<PastOrdersAdapter.ViewHolder>() {
 
         init {
-            orders = orders.sortedBy { !it.isSuccess }
+            orders = orders.sortedBy { it.status }
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -69,11 +70,14 @@ class PastOrdersActivity : AppCompatActivity() {
             val order = orders[position]
             holder.name.text = "order: " + order.order.id
             holder.count.text = order.order.items.count().toString() + " items"
-            if(!order.isSuccess){
+            if(order.status == OrderStatus.FAIL){
                 holder.statusImg.setImageResource(R.drawable.ic_failed)
                 holder.statusImg.setColorFilter(Color.RED)
-            }else{
+            }else if(order.status == OrderStatus.SUCCESS){
                 holder.statusImg.setColorFilter(Color.GREEN)
+            }else{
+                holder.statusImg.setImageResource(R.drawable.ic_failed)
+                holder.statusImg.setColorFilter(Color.YELLOW)
             }
             holder.statusImg.visibility = View.VISIBLE
 

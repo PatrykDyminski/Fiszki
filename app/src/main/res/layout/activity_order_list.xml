@@ -18,16 +18,6 @@
         <include layout="@layout/order_list" />
     </FrameLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="64dp"
-        android:contentDescription="data"
-        android:src="@drawable/ic_items" />
-
     <include layout="@layout/component_bottomnav"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

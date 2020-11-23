@@ -17,7 +17,11 @@ data class CompletedItem(val item: Item, val isSuccess: Boolean) : Parcelable
 data class Order(val id: String, val placedDate: Date, val items: List<Item>) : Parcelable
 
 @Parcelize
-data class PastOrder(val order: Order, val isSuccess: Boolean) : Parcelable
+data class PastOrder(val order: Order, val status: OrderStatus) : Parcelable
 
 @Parcelize
 data class PickProcessSummary(val completedItems: List<Item>, val failedItems: List<Item>, val order: Order) : Parcelable
+
+enum class OrderStatus {
+    SUCCESS, MIXED, FAIL
+}

@@ -2,24 +2,17 @@ package com.patryk.quickpick
 
 import android.app.Activity
 import android.content.ContentResolver
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Order
 import com.patryk.quickpick.data.Parser
@@ -52,13 +45,6 @@ class OrderListActivity : AppCompatActivity() {
         bottomNav.selectedItemId = R.id.home
         setBottomNav()
 
-        val fab: View = findViewById(R.id.fab)
-        fab.setOnClickListener {
-            val intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.type = "*/*"
-            startActivityForResult(intent, 1)
-        }
-
         if (findViewById<NestedScrollView>(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -70,6 +56,46 @@ class OrderListActivity : AppCompatActivity() {
         setupRecyclerView(findViewById(R.id.item_list))
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_main_menu, menu)
+        return true
+    }
+
+    var sortOrder: Boolean = true;
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+            when (item.itemId) {
+                R.id.sort -> {
+
+                    if (sortOrder){
+                        DemoDataContent.ORDERS.sortBy { it.placedDate }
+                        sortOrder = !sortOrder
+
+                        showToast("Old orders on top")
+
+                    }else{
+                        DemoDataContent.ORDERS.sortBy { it.placedDate }
+                        DemoDataContent.ORDERS.reverse()
+                        sortOrder = !sortOrder
+
+                        showToast("New orders on top")
+                    }
+
+                    setupRecyclerView(findViewById(R.id.item_list))
+
+                    true
+                }
+                R.id.parse -> {
+
+                    val intent = Intent(Intent.ACTION_GET_CONTENT)
+                    intent.type = "*/*"
+                    startActivityForResult(intent, 1)
+
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
+            }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
@@ -78,14 +104,17 @@ class OrderListActivity : AppCompatActivity() {
 
                 Parser.parseFile(file)
 
-                val text = "imported "+DemoDataContent.ORDERS.size.toString()+" orders"
-                val duration = Toast.LENGTH_SHORT
-                val toast = Toast.makeText(applicationContext, text, duration)
-                toast.show()
+                showToast("imported "+DemoDataContent.ORDERS.size.toString()+" orders")
 
                 setupRecyclerView(findViewById(R.id.item_list))
             }
         }
+    }
+
+    private fun showToast(text: String){
+        val duration = Toast.LENGTH_SHORT
+        val toast = Toast.makeText(applicationContext, text, duration)
+        toast.show()
     }
 
     private fun getFileFromUri(contentResolver: ContentResolver, uri: Uri, directory: File): File {
@@ -99,7 +128,7 @@ class OrderListActivity : AppCompatActivity() {
 
     private fun setBottomNav() {
         bottomNav.setOnNavigationItemSelectedListener(object :
-            BottomNavigationView.OnNavigationItemSelectedListener {
+                BottomNavigationView.OnNavigationItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.home -> {
@@ -127,9 +156,9 @@ class OrderListActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalStdlibApi::class)
     class SimpleItemRecyclerViewAdapter(
-        private val parentActivity: OrderListActivity,
-        private val values: List<Order>,
-        private val twoPane: Boolean
+            private val parentActivity: OrderListActivity,
+            private val values: List<Order>,
+            private val twoPane: Boolean
     ) : RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
 
         private val onClickListener: View.OnClickListener
