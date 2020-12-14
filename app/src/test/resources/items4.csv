@@ -1,0 +1,12 @@
+﻿item1;cat1;bar1;20;10;10;20
+item2;cat2;bar2;20;10;10;20
+item3;cat3;bar3;20;10;10;20
+item4;cat4;bar4;20;10;10;20
+item5;cat5;bar5;20;10;10;20
+item6;cat6;bar6;20;10;10;20
+item7;cat7;bar7;20;10;10;20
+orDers
+ord1;10.10.2020;bar1;bar2;bar3;;
+ord2;11.10.2020;bar1;bar2;bar3;;
+ord3;12.10.2020;bar1;bar2;bar3;bar5;bar6
+ord4;13.10.2020;bar1;bar2;bar3;bar4;

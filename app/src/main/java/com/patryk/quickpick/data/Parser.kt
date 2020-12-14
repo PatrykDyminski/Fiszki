@@ -15,7 +15,7 @@ object Parser {
         var areOrders = false
 
         for(line in content){
-            if (line.split(";")[0] == "ORDERS"){
+            if (line.split(";")[0].toUpperCase() == "ORDERS"){
                 areOrders = true
                 continue
             }
@@ -85,7 +85,7 @@ object Parser {
         return order
     }
 
-    private fun createItem(itemString: String): Item {
+    fun createItem(itemString: String): Item {
         val data = itemString.split(";")
 
         return Item(data[0], data[1], data[2], data[3].toDouble(), Dimensions(data[4].toFloat(), data[5].toFloat(), data[6].toFloat()))

@@ -13,6 +13,7 @@ import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.OrderSummaryActivity
 import com.patryk.quickpick.R
 import com.patryk.quickpick.data.DemoDataContent
+import com.patryk.quickpick.data.Dimensions
 import com.patryk.quickpick.data.Item
 import com.patryk.quickpick.data.Order
 
@@ -91,8 +92,12 @@ class PickProcessFragment : Fragment() {
         fragmentView.findViewById<TextView>(R.id.itemNameLabel).text = item.name
         fragmentView.findViewById<TextView>(R.id.barcodeLabel).text = item.barcode
         fragmentView.findViewById<TextView>(R.id.categoryLabel).text = item.category
-        fragmentView.findViewById<TextView>(R.id.weightLabel).text = item.mass.toString()
-        fragmentView.findViewById<TextView>(R.id.dimensionsLabel).text = item.dimensions.toString()
+        fragmentView.findViewById<TextView>(R.id.weightLabel).text = "WEIGHT: "+ item.mass.toString() + " g"
+        fragmentView.findViewById<TextView>(R.id.dimensionsLabel).text = dosplay(item.dimensions)
+    }
+
+    private fun dosplay(dim: Dimensions): String {
+        return "SIZE: "+ dim.x.toString() + "cm x " +  dim.y.toString() + "cm x " + dim.z.toString() + "cm"
     }
 
     companion object {

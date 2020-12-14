@@ -27,7 +27,7 @@ object DemoDataContent {
         ORDERS.add(order)
     }
 
-    private fun createOrder(position: Int): Order {
+    fun createOrder(position: Int): Order {
         return Order(position.toString(), java.util.Date(), makeItems(position))
     }
 
@@ -35,12 +35,11 @@ object DemoDataContent {
         var items = mutableListOf<Item>()
 
         for(i in 1..position){
-            val item = Item("name:"+i.toString(), "SampleCategory", "brcd:"+i.toString(), 20.2 * i, Dimensions(1f,1f,1f))
+            val item = Item("name:$i", "SampleCategory", "brcd:$i", 20.2 * i, Dimensions(1f,1f,1f))
             items.add(item)
             ITEMS.add(item)
         }
 
         return items
     }
-
 }
