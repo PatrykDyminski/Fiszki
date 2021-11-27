@@ -66,13 +66,7 @@ class OrderDetailFragment : Fragment() {
     }
 
     private fun bindFields(rootView: View){
-        rootView.findViewById<TextView>(R.id.pageTitle).text = "Order " + listaFiszek.name + " - " + listaFiszek.fiszkas.size.toString() + " to pick"
-
-        val dimensionsText = rootView.findViewById<TextView>(R.id.dimensions)
-        dimensionsText.text = "Box - 10 x 50 x 10 cm"
-
-        val boxText = rootView.findViewById<TextView>(R.id.box)
-        boxText.text = "Medium Box"
+        rootView.findViewById<TextView>(R.id.pageTitle).text = listaFiszek.name
     }
 
     private fun bindButtons(rootView : View){

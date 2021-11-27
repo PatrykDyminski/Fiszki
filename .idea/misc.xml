@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_item_list.xml" value="0.21302083333333333" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_completed_item.xml" value="0.5" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_item_in_order.xml" value="0.5" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/fragment_order_detail.xml" value="0.46121057118499575" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/QuickPick/app/src/main/res/layout/component_appbar.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/QuickPick/app/src/main/res/layout/content_completed_item.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/QuickPick/app/src/main/res/layout/content_item_in_order.xml" value="0.36666666666666664" />
