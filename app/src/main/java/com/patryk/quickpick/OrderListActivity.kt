@@ -189,8 +189,8 @@ class OrderListActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val order = values[position]
-            holder.idView.text = "order: " + order.name
-            holder.contentView.text = order.fiszkas.count().toString() + " items"
+            holder.idView.text = order.name
+            holder.contentView.text = order.fiszkas.count().toString() + " słówek"
 
             with(holder.itemView) {
                 tag = order

@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Fiszki</string>
-    <string name="title_item_detail">Order Detail</string>
+    <string name="title_item_detail">Szczegóły Listy Fiszek</string>
 </resources>
