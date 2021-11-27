@@ -161,27 +161,23 @@ class OrderListActivity : AppCompatActivity() {
             private val twoPane: Boolean
     ) : RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
 
-        private val onClickListener: View.OnClickListener
-
-        init {
-            onClickListener = View.OnClickListener { v ->
-                val order = v.tag as Order
-                if (twoPane) {
-                    val fragment = OrderDetailFragment().apply {
-                        arguments = Bundle().apply {
-                            putString(OrderDetailFragment.ARG_ORDER_ID, order.id)
-                        }
+        private val onClickListener: View.OnClickListener = View.OnClickListener { v ->
+            val order = v.tag as Order
+            if (twoPane) {
+                val fragment = OrderDetailFragment().apply {
+                    arguments = Bundle().apply {
+                        putString(OrderDetailFragment.ARG_ORDER_ID, order.id)
                     }
-                    parentActivity.supportFragmentManager
-                            .beginTransaction()
-                            .replace(R.id.item_detail_container, fragment)
-                            .commit()
-                } else {
-                    val intent = Intent(v.context, OrderDetailActivity::class.java).apply {
-                        putExtra(OrderDetailFragment.ARG_ORDER_ID, order.id)
-                    }
-                    v.context.startActivity(intent)
                 }
+                parentActivity.supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.item_detail_container, fragment)
+                        .commit()
+            } else {
+                val intent = Intent(v.context, OrderDetailActivity::class.java).apply {
+                    putExtra(OrderDetailFragment.ARG_ORDER_ID, order.id)
+                }
+                v.context.startActivity(intent)
             }
         }
 

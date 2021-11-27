@@ -16,7 +16,7 @@ object DemoDataContent {
             addOrder(createOrder(i))
         }
 
-        PAST_ORDERS.add(PastOrder(createOrder(16), OrderStatus.FAIL))
+        PAST_ORDERS.add(PastOrder(createOrder(16),OrderStatus.FAIL))
         PAST_ORDERS.add(PastOrder(createOrder(17),OrderStatus.SUCCESS))
         PAST_ORDERS.add(PastOrder(createOrder(18),OrderStatus.MIXED))
         PAST_ORDERS.add(PastOrder(createOrder(19),OrderStatus.FAIL))
