@@ -5,23 +5,24 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class Dimensions(val x: Float, val y: Float, val z: Float) : Parcelable
+data class Fiszka(val word: String, val translation: String, val status: LearnStatus) : Parcelable
 
 @Parcelize
-data class Item(val name: String, val category: String, val barcode: String, val mass: Double, val dimensions: Dimensions) : Parcelable
+data class CompletedItem(val fiszka: Fiszka, val isSuccess: Boolean) : Parcelable
 
 @Parcelize
-data class CompletedItem(val item: Item, val isSuccess: Boolean) : Parcelable
-
-@Parcelize
-data class Order(val id: String, val placedDate: Date, val items: List<Item>) : Parcelable
+data class Order(val id: String, val placedDate: Date, val fiszkas: List<Fiszka>) : Parcelable
 
 @Parcelize
 data class PastOrder(val order: Order, val status: OrderStatus) : Parcelable
 
 @Parcelize
-data class PickProcessSummary(val completedItems: List<Item>, val failedItems: List<Item>, val order: Order) : Parcelable
+data class PickProcessSummary(val completedFiszkas: List<Fiszka>, val failedFiszkas: List<Fiszka>, val order: Order) : Parcelable
 
 enum class OrderStatus {
     SUCCESS, MIXED, FAIL
+}
+
+enum class LearnStatus {
+    LEARNED, MIXED, NOT_LEARNED
 }

@@ -69,7 +69,7 @@ class PastOrdersActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val order = orders[position]
             holder.name.text = "order: " + order.order.id
-            holder.count.text = order.order.items.count().toString() + " items"
+            holder.count.text = order.order.fiszkas.count().toString() + " items"
             if(order.status == OrderStatus.FAIL){
                 holder.statusImg.setImageResource(R.drawable.ic_failed)
                 holder.statusImg.setColorFilter(Color.RED)

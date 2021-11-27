@@ -33,7 +33,7 @@ class ItemListActivity : AppCompatActivity() {
         setBottomNav()
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = OrderDetailFragment.MyAdapter(DemoDataContent.ITEMS)
+        viewAdapter = OrderDetailFragment.MyAdapter(DemoDataContent.Fiszkas)
         recyclerView = this.findViewById<RecyclerView>(R.id.allItems).apply {
             setHasFixedSize(true)
             layoutManager = viewManager

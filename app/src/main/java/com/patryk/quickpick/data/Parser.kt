@@ -29,16 +29,16 @@ object Parser {
         val items = populateItems(itemsStrings)
         val orders = populateOrders(ordersStrings, items)
 
-        DemoDataContent.ITEMS = items
+        DemoDataContent.Fiszkas = items
         DemoDataContent.ORDERS = orders
         DemoDataContent.PAST_ORDERS = ArrayList()
 
         return orders
     }
 
-    private fun populateItems(itemStrings: ArrayList<String>): ArrayList<Item> {
+    private fun populateItems(itemStrings: ArrayList<String>): ArrayList<Fiszka> {
 
-        val items = ArrayList<Item>()
+        val items = ArrayList<Fiszka>()
 
         for(itemString in itemStrings){
             val item = createItem(itemString)
@@ -48,19 +48,19 @@ object Parser {
         return items
     }
 
-    private fun populateOrders(orderStrings: ArrayList<String>, items: List<Item>): ArrayList<Order> {
+    private fun populateOrders(orderStrings: ArrayList<String>, fiszkas: List<Fiszka>): ArrayList<Order> {
 
         val orders = ArrayList<Order>()
 
         for(orderString in orderStrings){
-            val order = createOrder(orderString, items)
+            val order = createOrder(orderString, fiszkas)
             orders.add(order)
         }
 
         return orders
     }
 
-    private fun createOrder(orderString: String, items: List<Item>): Order {
+    private fun createOrder(orderString: String, fiszkas: List<Fiszka>): Order {
 
         val data = orderString.split(";")
 
@@ -74,10 +74,10 @@ object Parser {
 
         val itemSS = data.subList(2, if(last == -1) data.size else last )
 
-        val oitems = ArrayList<Item>()
+        val oitems = ArrayList<Fiszka>()
 
         for(itemstr in itemSS){
-            oitems.add(items.find { item -> item.barcode == itemstr }!!)
+            oitems.add(fiszkas.find { item -> item.word == itemstr }!!)
         }
 
         val order = Order(oname, odate!!, oitems)
@@ -85,9 +85,9 @@ object Parser {
         return order
     }
 
-    fun createItem(itemString: String): Item {
+    fun createItem(itemString: String): Fiszka {
         val data = itemString.split(";")
 
-        return Item(data[0], data[1], data[2], data[3].toDouble(), Dimensions(data[4].toFloat(), data[5].toFloat(), data[6].toFloat()))
+        return Fiszka(data[0], data[1], LearnStatus.LEARNED)
     }
 }

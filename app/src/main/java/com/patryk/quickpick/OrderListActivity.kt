@@ -190,7 +190,7 @@ class OrderListActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val order = values[position]
             holder.idView.text = "order: " + order.id
-            holder.contentView.text = order.items.count().toString() + " items"
+            holder.contentView.text = order.fiszkas.count().toString() + " items"
 
             with(holder.itemView) {
                 tag = order

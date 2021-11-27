@@ -3,7 +3,6 @@ package com.patryk.quickpick
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.*
-import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.ui.pickprocess.PickProcessFragment
 
 @ExperimentalStdlibApi
@@ -36,20 +33,20 @@ class OrderSummaryActivity : AppCompatActivity() {
         val summary = intent.getParcelableExtra<PickProcessSummary>(PickProcessFragment.ORDER_SUMMARY)
         val items = ArrayList<CompletedItem>()
 
-        summary?.completedItems?.forEach {
+        summary?.completedFiszkas?.forEach {
             items.add(CompletedItem(it, true))
         }
 
-        summary?.failedItems?.forEach {
+        summary?.failedFiszkas?.forEach {
             items.add(CompletedItem(it, false))
         }
 
         val finishButton: Button = findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
 
-            val status: OrderStatus = if(summary!!.failedItems.isEmpty()){
+            val status: OrderStatus = if(summary!!.failedFiszkas.isEmpty()){
                 OrderStatus.SUCCESS
-            }else if(summary.completedItems.isEmpty()){
+            }else if(summary.completedFiszkas.isEmpty()){
                 OrderStatus.FAIL
             }else{
                 OrderStatus.MIXED
@@ -93,8 +90,8 @@ class OrderSummaryActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val item = items[position]
 
-            holder.name.text = item.item.name
-            holder.barcode.text = item.item.barcode
+            holder.name.text = item.fiszka.word
+            holder.barcode.text = item.fiszka.status.toString()
 
             if(!item.isSuccess){
                 holder.statusImg.setImageResource(R.drawable.ic_failed)

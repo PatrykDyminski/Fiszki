@@ -1,13 +1,12 @@
 package com.patryk.quickpick.data
 
 import java.util.ArrayList
-import java.util.HashMap
 
 object DemoDataContent {
 
     var ORDERS: MutableList<Order> = ArrayList()
     var PAST_ORDERS: MutableList<PastOrder> = ArrayList()
-    var ITEMS: MutableList<Item> = ArrayList()
+    var Fiszkas: MutableList<Fiszka> = ArrayList()
 
     private const val COUNT = 15
 
@@ -28,18 +27,18 @@ object DemoDataContent {
     }
 
     fun createOrder(position: Int): Order {
-        return Order(position.toString(), java.util.Date(), makeItems(position))
+        return Order(position.toString(), java.util.Date(), makeFiszki(position))
     }
 
-    private fun makeItems(position: Int): List<Item> {
-        var items = mutableListOf<Item>()
+    private fun makeFiszki(position: Int): List<Fiszka> {
+        var fiszki = mutableListOf<Fiszka>()
 
         for(i in 1..position){
-            val item = Item("name:$i", "SampleCategory", "brcd:$i", 20.2 * i, Dimensions(1f,1f,1f))
-            items.add(item)
-            ITEMS.add(item)
+            val fiszka = Fiszka("word:$i", "translation:$i", LearnStatus.LEARNED)
+            fiszki.add(fiszka)
+            Fiszkas.add(fiszka)
         }
 
-        return items
+        return fiszki
     }
 }

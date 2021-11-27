@@ -1,6 +1,6 @@
 package com.patryk.quickpick.logic
 
-import com.patryk.quickpick.data.Item
+import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.Order
 import com.patryk.quickpick.data.PickProcessSummary
 
@@ -9,24 +9,24 @@ class PickProcess(order: Order) {
 
     private var _order : Order = order
 
-    private var pendingItems: MutableList<Item> = mutableListOf<Item>()
-    private var completedItems: MutableList<Item> = mutableListOf<Item>()
-    private var failedItems: MutableList<Item> = mutableListOf<Item>()
-    private var currentItem: Item
+    private var pendingFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
+    private var completedFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
+    private var failedFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
+    private var currentFiszka: Fiszka
 
     private var isProcessFinished: Boolean = false
 
     init{
-        pendingItems.addAll(order.items)
-        currentItem = pendingItems.removeFirst()
+        pendingFiszkas.addAll(order.fiszkas)
+        currentFiszka = pendingFiszkas.removeFirst()
     }
 
-    fun getCurrentlyProcessedItem() : Item{
-        return currentItem
+    fun getCurrentlyProcessedItem() : Fiszka{
+        return currentFiszka
     }
 
     fun getPickingSummary(): PickProcessSummary {
-        return PickProcessSummary(completedItems, failedItems, _order)
+        return PickProcessSummary(completedFiszkas, failedFiszkas, _order)
     }
 
     fun getIsProcessFinished() : Boolean{
@@ -34,18 +34,18 @@ class PickProcess(order: Order) {
     }
 
     fun pickItem(){
-        completedItems.add(currentItem)
-        if(pendingItems.size > 0){
-            currentItem = pendingItems.removeFirst()
+        completedFiszkas.add(currentFiszka)
+        if(pendingFiszkas.size > 0){
+            currentFiszka = pendingFiszkas.removeFirst()
         }else{
             endProcess()
         }
     }
 
     fun failItem(){
-        failedItems.add(currentItem)
-        if(pendingItems.size > 0){
-            currentItem = pendingItems.removeFirst()
+        failedFiszkas.add(currentFiszka)
+        if(pendingFiszkas.size > 0){
+            currentFiszka = pendingFiszkas.removeFirst()
         }else{
             endProcess()
         }

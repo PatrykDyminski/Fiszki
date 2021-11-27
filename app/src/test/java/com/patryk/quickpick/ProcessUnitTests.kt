@@ -40,8 +40,8 @@ class ProcessUnitTests {
         sut.pickItem()
         sut.pickItem()
 
-        assertEquals(2, sut.getPickingSummary().completedItems.size)
-        assertEquals(0, sut.getPickingSummary().failedItems.size)
+        assertEquals(2, sut.getPickingSummary().completedFiszkas.size)
+        assertEquals(0, sut.getPickingSummary().failedFiszkas.size)
     }
 
     @Test
@@ -53,16 +53,16 @@ class ProcessUnitTests {
         sut.pickItem()
         sut.failItem()
 
-        assertEquals(3, sut.getPickingSummary().completedItems.size)
-        assertEquals(1, sut.getPickingSummary().failedItems.size)
+        assertEquals(3, sut.getPickingSummary().completedFiszkas.size)
+        assertEquals(1, sut.getPickingSummary().failedFiszkas.size)
     }
 
     @Test
     fun processNotFinishedSummaryIsValid(){
         val sut = prepareSut(2)
 
-        assertEquals(0, sut.getPickingSummary().completedItems.size)
-        assertEquals(0, sut.getPickingSummary().failedItems.size)
+        assertEquals(0, sut.getPickingSummary().completedFiszkas.size)
+        assertEquals(0, sut.getPickingSummary().failedFiszkas.size)
     }
 
     @Test

@@ -23,10 +23,10 @@ class ParserUnitTest {
         val orders = Parser.parseFile(file)
 
         assertEquals(4, orders.size)
-        assertEquals(3, orders[0].items.size)
-        assertEquals(3, orders[1].items.size)
-        assertEquals(5, orders[2].items.size)
-        assertEquals(4, orders[3].items.size)
+        assertEquals(3, orders[0].fiszkas.size)
+        assertEquals(3, orders[1].fiszkas.size)
+        assertEquals(5, orders[2].fiszkas.size)
+        assertEquals(4, orders[3].fiszkas.size)
     }
 
     @Test
@@ -38,8 +38,8 @@ class ParserUnitTest {
         val orders = Parser.parseFile(file)
 
         assertEquals(4, orders.size)
-        assertEquals("bar1", orders[0].items[0].barcode)
-        assertEquals("bar2", orders[0].items[1].barcode)
+        assertEquals("bar1", orders[0].fiszkas[0].barcode)
+        assertEquals("bar2", orders[0].fiszkas[1].barcode)
     }
 
     @Test
@@ -58,7 +58,7 @@ class ParserUnitTest {
     fun createItemItemIsCreated(){
         val item = Parser.createItem("item5;cat5;bar5;20;10;10;20")
 
-        assertEquals("item5", item.name)
+        assertEquals("item5", item.word)
         assertEquals("bar5", item.barcode)
     }
 

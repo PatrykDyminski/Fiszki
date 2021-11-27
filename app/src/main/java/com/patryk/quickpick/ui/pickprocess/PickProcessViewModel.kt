@@ -1,7 +1,7 @@
 package com.patryk.quickpick.ui.pickprocess
 
 import androidx.lifecycle.ViewModel
-import com.patryk.quickpick.data.Item
+import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.Order
 import com.patryk.quickpick.data.PickProcessSummary
 import com.patryk.quickpick.logic.PickProcess
@@ -17,7 +17,7 @@ class PickProcessViewModel : ViewModel() {
         pickProcess = PickProcess(processedOrder)
     }
 
-    fun getCurrentlyProcessedItem(): Item {
+    fun getCurrentlyProcessedItem(): Fiszka {
         return pickProcess.getCurrentlyProcessedItem()
     }
 
