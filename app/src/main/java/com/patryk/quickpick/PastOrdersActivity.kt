@@ -93,7 +93,7 @@ class PastOrdersActivity : AppCompatActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.home -> {
-                        val intent = Intent(this@PastOrdersActivity, OrderListActivity::class.java)
+                        val intent = Intent(this@PastOrdersActivity, ListaListFiszekActivity::class.java)
                         this@PastOrdersActivity.startActivity(intent)
                         return true
                     }
@@ -101,7 +101,7 @@ class PastOrdersActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.items -> {
-                        val intent = Intent(this@PastOrdersActivity, ItemListActivity::class.java)
+                        val intent = Intent(this@PastOrdersActivity, ListaWszystkichFiszekActivity::class.java)
                         this@PastOrdersActivity.startActivity(intent)
                         return true
                     }

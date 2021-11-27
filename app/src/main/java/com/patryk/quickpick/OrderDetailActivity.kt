@@ -11,7 +11,7 @@ import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
  * An activity representing a single Item detail screen. This
  * activity is only used on narrow width devices. On tablet-size devices,
  * item details are presented side-by-side with a list of items
- * in a [OrderListActivity].
+ * in a [ListaListFiszekActivity].
  */
 @ExperimentalStdlibApi
 class OrderDetailActivity : AppCompatActivity() {
@@ -39,13 +39,13 @@ class OrderDetailActivity : AppCompatActivity() {
     }
 
     public fun fBack(){
-        navigateUpTo(Intent(this, OrderListActivity::class.java))
+        navigateUpTo(Intent(this, ListaListFiszekActivity::class.java))
     }
 
     override fun onOptionsItemSelected(item: MenuItem) =
             when (item.itemId) {
                 android.R.id.home -> {
-                    navigateUpTo(Intent(this, OrderListActivity::class.java))
+                    navigateUpTo(Intent(this, ListaListFiszekActivity::class.java))
                     true
                 }
                 else -> super.onOptionsItemSelected(item)

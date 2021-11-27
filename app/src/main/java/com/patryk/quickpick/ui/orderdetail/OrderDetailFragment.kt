@@ -99,7 +99,6 @@ class OrderDetailFragment : Fragment() {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val name: TextView = view.findViewById(R.id.item_name)
-            val barcode: TextView = view.findViewById(R.id.barcode)
             val category: TextView = view.findViewById(R.id.category)
         }
 

@@ -11,7 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
-class ItemListActivity : AppCompatActivity() {
+//Lista słów
+class ListaWszystkichFiszekActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -47,13 +48,13 @@ class ItemListActivity : AppCompatActivity() {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.home -> {
-                        val intent = Intent(this@ItemListActivity, OrderListActivity::class.java)
-                        this@ItemListActivity.startActivity(intent)
+                        val intent = Intent(this@ListaWszystkichFiszekActivity, ListaListFiszekActivity::class.java)
+                        this@ListaWszystkichFiszekActivity.startActivity(intent)
                         return true
                     }
                     R.id.completed -> {
-                        val intent = Intent(this@ItemListActivity, PastOrdersActivity::class.java)
-                        this@ItemListActivity.startActivity(intent)
+                        val intent = Intent(this@ListaWszystkichFiszekActivity, PastOrdersActivity::class.java)
+                        this@ListaWszystkichFiszekActivity.startActivity(intent)
                         return true
                     }
                     R.id.items -> {

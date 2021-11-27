@@ -55,7 +55,7 @@ class OrderSummaryActivity : AppCompatActivity() {
             DemoDataContent.PAST_ORDERS.add(PastOrder(summary.listaFiszek, status))
             DemoDataContent.ListaFiszeks.remove(summary.listaFiszek)
 
-            val intent = Intent(this, OrderListActivity::class.java)
+            val intent = Intent(this, ListaListFiszekActivity::class.java)
             startActivity(intent)
         }
 
@@ -77,7 +77,7 @@ class OrderSummaryActivity : AppCompatActivity() {
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val name: TextView = view.findViewById(R.id.item_name)
-            val barcode: TextView = view.findViewById(R.id.barcode)
+            val translation: TextView = view.findViewById(R.id.barcode)
             val statusImg: ImageView = view.findViewById(R.id.item_status_img)
         }
 
@@ -91,7 +91,7 @@ class OrderSummaryActivity : AppCompatActivity() {
             val item = fiszkas[position]
 
             holder.name.text = item.fiszka.word
-            holder.barcode.text = item.fiszka.status.toString()
+            holder.translation.text = item.fiszka.translation
 
             if(!item.isSuccess){
                 holder.statusImg.setImageResource(R.drawable.ic_failed)

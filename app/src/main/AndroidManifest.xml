@@ -14,7 +14,7 @@
             android:theme="@style/Theme.QuickPick.NoActionBar">
         </activity>
         <activity
-            android:name=".ItemListActivity"
+            android:name=".ListaWszystkichFiszekActivity"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
             android:name=".OrderSummaryActivity"
@@ -24,7 +24,7 @@
             android:label="Nauka"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
-            android:name=".OrderListActivity"
+            android:name=".ListaListFiszekActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.QuickPick.NoActionBar">
             <intent-filter>
@@ -36,11 +36,11 @@
         <activity
             android:name=".OrderDetailActivity"
             android:label="@string/title_item_detail"
-            android:parentActivityName=".OrderListActivity"
+            android:parentActivityName=".ListaListFiszekActivity"
             android:theme="@style/Theme.QuickPick.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.patryk.quickpick.OrderListActivity" />
+                android:value="com.patryk.quickpick.ListaListFiszekActivity" />
         </activity>
     </application>
 

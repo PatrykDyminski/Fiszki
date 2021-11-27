@@ -28,7 +28,7 @@ import java.io.File
  * item details. On tablets, the activity presents the list of items and
  * item details side-by-side using two vertical panes.
  */
-class OrderListActivity : AppCompatActivity() {
+class ListaListFiszekActivity : AppCompatActivity() {
 
     private var twoPane: Boolean = false
     private lateinit var bottomNav : BottomNavigationView
@@ -135,13 +135,13 @@ class OrderListActivity : AppCompatActivity() {
                         return true
                     }
                     R.id.completed -> {
-                        val intent = Intent(this@OrderListActivity, PastOrdersActivity::class.java)
-                        this@OrderListActivity.startActivity(intent)
+                        val intent = Intent(this@ListaListFiszekActivity, PastOrdersActivity::class.java)
+                        this@ListaListFiszekActivity.startActivity(intent)
                         return true
                     }
                     R.id.items -> {
-                        val intent = Intent(this@OrderListActivity, ItemListActivity::class.java)
-                        this@OrderListActivity.startActivity(intent)
+                        val intent = Intent(this@ListaListFiszekActivity, ListaWszystkichFiszekActivity::class.java)
+                        this@ListaListFiszekActivity.startActivity(intent)
                         return true
                     }
                 }
@@ -156,7 +156,7 @@ class OrderListActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalStdlibApi::class)
     class SimpleItemRecyclerViewAdapter(
-        private val parentActivity: OrderListActivity,
+        private val parentActivity: ListaListFiszekActivity,
         private val values: List<ListaFiszek>,
         private val twoPane: Boolean
     ) : RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
