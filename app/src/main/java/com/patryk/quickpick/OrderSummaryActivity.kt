@@ -31,14 +31,14 @@ class OrderSummaryActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val summary = intent.getParcelableExtra<PickProcessSummary>(PickProcessFragment.ORDER_SUMMARY)
-        val items = ArrayList<CompletedItem>()
+        val items = ArrayList<CompletedFiszka>()
 
         summary?.completedFiszkas?.forEach {
-            items.add(CompletedItem(it, true))
+            items.add(CompletedFiszka(it, true))
         }
 
         summary?.failedFiszkas?.forEach {
-            items.add(CompletedItem(it, false))
+            items.add(CompletedFiszka(it, false))
         }
 
         val finishButton: Button = findViewById(R.id.finishButton)
@@ -68,11 +68,11 @@ class OrderSummaryActivity : AppCompatActivity() {
         }
     }
 
-    class CompletedItemsAdapter(private var items: List<CompletedItem>)
+    class CompletedItemsAdapter(private var fiszkas: List<CompletedFiszka>)
         : RecyclerView.Adapter<CompletedItemsAdapter.ViewHolder>() {
 
         init {
-            items = items.sortedBy { !it.isSuccess }
+            fiszkas = fiszkas.sortedBy { !it.isSuccess }
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -88,7 +88,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val item = items[position]
+            val item = fiszkas[position]
 
             holder.name.text = item.fiszka.word
             holder.barcode.text = item.fiszka.status.toString()
@@ -101,6 +101,6 @@ class OrderSummaryActivity : AppCompatActivity() {
             }
         }
 
-        override fun getItemCount() = items.size
+        override fun getItemCount() = fiszkas.size
     }
 }

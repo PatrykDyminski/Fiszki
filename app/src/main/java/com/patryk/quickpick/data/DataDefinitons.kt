@@ -8,7 +8,7 @@ import java.util.*
 data class Fiszka(val word: String, val translation: String, val status: LearnStatus) : Parcelable
 
 @Parcelize
-data class CompletedItem(val fiszka: Fiszka, val isSuccess: Boolean) : Parcelable
+data class CompletedFiszka(val fiszka: Fiszka, val isSuccess: Boolean) : Parcelable
 
 @Parcelize
 data class ListaFiszek(val name: String, val fiszkas: List<Fiszka>) : Parcelable
