@@ -14,7 +14,7 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
-import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.Parser
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import java.io.File
@@ -68,17 +68,17 @@ class OrderListActivity : AppCompatActivity() {
                 R.id.sort -> {
 
                     if (sortOrder){
-                        DemoDataContent.ORDERS.sortBy { it.placedDate }
+                        DemoDataContent.ListaFiszeks.sortBy { it.name }
                         sortOrder = !sortOrder
 
-                        showToast("Old orders on top")
+                        showToast("Sorted by name")
 
                     }else{
-                        DemoDataContent.ORDERS.sortBy { it.placedDate }
-                        DemoDataContent.ORDERS.reverse()
+                        DemoDataContent.ListaFiszeks.sortBy { it.name }
+                        DemoDataContent.ListaFiszeks.reverse()
                         sortOrder = !sortOrder
 
-                        showToast("New orders on top")
+                        showToast("Sorted by name")
                     }
 
                     setupRecyclerView(findViewById(R.id.item_list))
@@ -104,7 +104,7 @@ class OrderListActivity : AppCompatActivity() {
 
                 Parser.parseFile(file)
 
-                showToast("imported "+DemoDataContent.ORDERS.size.toString()+" orders")
+                showToast("imported "+DemoDataContent.ListaFiszeks.size.toString()+" orders")
 
                 setupRecyclerView(findViewById(R.id.item_list))
             }
@@ -151,22 +151,22 @@ class OrderListActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DemoDataContent.ORDERS, twoPane)
+        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DemoDataContent.ListaFiszeks, twoPane)
     }
 
     @OptIn(ExperimentalStdlibApi::class)
     class SimpleItemRecyclerViewAdapter(
-            private val parentActivity: OrderListActivity,
-            private val values: List<Order>,
-            private val twoPane: Boolean
+        private val parentActivity: OrderListActivity,
+        private val values: List<ListaFiszek>,
+        private val twoPane: Boolean
     ) : RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
 
         private val onClickListener: View.OnClickListener = View.OnClickListener { v ->
-            val order = v.tag as Order
+            val order = v.tag as ListaFiszek
             if (twoPane) {
                 val fragment = OrderDetailFragment().apply {
                     arguments = Bundle().apply {
-                        putString(OrderDetailFragment.ARG_ORDER_ID, order.id)
+                        putString(OrderDetailFragment.ARG_ORDER_ID, order.name)
                     }
                 }
                 parentActivity.supportFragmentManager
@@ -175,7 +175,7 @@ class OrderListActivity : AppCompatActivity() {
                         .commit()
             } else {
                 val intent = Intent(v.context, OrderDetailActivity::class.java).apply {
-                    putExtra(OrderDetailFragment.ARG_ORDER_ID, order.id)
+                    putExtra(OrderDetailFragment.ARG_ORDER_ID, order.name)
                 }
                 v.context.startActivity(intent)
             }
@@ -189,7 +189,7 @@ class OrderListActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val order = values[position]
-            holder.idView.text = "order: " + order.id
+            holder.idView.text = "order: " + order.name
             holder.contentView.text = order.fiszkas.count().toString() + " items"
 
             with(holder.itemView) {

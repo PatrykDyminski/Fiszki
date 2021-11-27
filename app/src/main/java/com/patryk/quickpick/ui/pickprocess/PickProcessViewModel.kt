@@ -2,19 +2,19 @@ package com.patryk.quickpick.ui.pickprocess
 
 import androidx.lifecycle.ViewModel
 import com.patryk.quickpick.data.Fiszka
-import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.PickProcessSummary
 import com.patryk.quickpick.logic.PickProcess
 
 @ExperimentalStdlibApi
 class PickProcessViewModel : ViewModel() {
 
-    private lateinit var processedOrder: Order
+    private lateinit var processedListaFiszek: ListaFiszek
     private lateinit var pickProcess: PickProcess
 
-    fun setupProcess(order: Order){
-        processedOrder = order
-        pickProcess = PickProcess(processedOrder)
+    fun setupProcess(listaFiszek: ListaFiszek){
+        processedListaFiszek = listaFiszek
+        pickProcess = PickProcess(processedListaFiszek)
     }
 
     fun getCurrentlyProcessedItem(): Fiszka {

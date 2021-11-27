@@ -1,13 +1,13 @@
 package com.patryk.quickpick.logic
 
 import com.patryk.quickpick.data.Fiszka
-import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.PickProcessSummary
 
 @ExperimentalStdlibApi
-class PickProcess(order: Order) {
+class PickProcess(listaFiszek: ListaFiszek) {
 
-    private var _order : Order = order
+    private var _listaFiszek : ListaFiszek = listaFiszek
 
     private var pendingFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
     private var completedFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
@@ -17,7 +17,7 @@ class PickProcess(order: Order) {
     private var isProcessFinished: Boolean = false
 
     init{
-        pendingFiszkas.addAll(order.fiszkas)
+        pendingFiszkas.addAll(listaFiszek.fiszkas)
         currentFiszka = pendingFiszkas.removeFirst()
     }
 
@@ -26,7 +26,7 @@ class PickProcess(order: Order) {
     }
 
     fun getPickingSummary(): PickProcessSummary {
-        return PickProcessSummary(completedFiszkas, failedFiszkas, _order)
+        return PickProcessSummary(completedFiszkas, failedFiszkas, _listaFiszek)
     }
 
     fun getIsProcessFinished() : Boolean{

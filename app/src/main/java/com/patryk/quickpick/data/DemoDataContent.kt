@@ -4,7 +4,7 @@ import java.util.ArrayList
 
 object DemoDataContent {
 
-    var ORDERS: MutableList<Order> = ArrayList()
+    var ListaFiszeks: MutableList<ListaFiszek> = ArrayList()
     var PAST_ORDERS: MutableList<PastOrder> = ArrayList()
     var Fiszkas: MutableList<Fiszka> = ArrayList()
 
@@ -22,12 +22,12 @@ object DemoDataContent {
         PAST_ORDERS.add(PastOrder(createOrder(20),OrderStatus.SUCCESS))
     }
 
-    private fun addOrder(order: Order) {
-        ORDERS.add(order)
+    private fun addOrder(listaFiszek: ListaFiszek) {
+        ListaFiszeks.add(listaFiszek)
     }
 
-    fun createOrder(position: Int): Order {
-        return Order(position.toString(), java.util.Date(), makeFiszki(position))
+    fun createOrder(position: Int): ListaFiszek {
+        return ListaFiszek("Lista$position", makeFiszki(position))
     }
 
     private fun makeFiszki(position: Int): List<Fiszka> {

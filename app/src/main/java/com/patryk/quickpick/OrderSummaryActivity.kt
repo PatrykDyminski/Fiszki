@@ -52,8 +52,8 @@ class OrderSummaryActivity : AppCompatActivity() {
                 OrderStatus.MIXED
             }
 
-            DemoDataContent.PAST_ORDERS.add(PastOrder(summary.order, status))
-            DemoDataContent.ORDERS.remove(summary.order)
+            DemoDataContent.PAST_ORDERS.add(PastOrder(summary.listaFiszek, status))
+            DemoDataContent.ListaFiszeks.remove(summary.listaFiszek)
 
             val intent = Intent(this, OrderListActivity::class.java)
             startActivity(intent)

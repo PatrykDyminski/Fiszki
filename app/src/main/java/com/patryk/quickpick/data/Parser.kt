@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 
 object Parser {
 
-    fun parseFile(file: File): ArrayList<Order> {
+    fun parseFile(file: File): ArrayList<ListaFiszek> {
         val content = file.readLines()
 
         val itemsStrings = ArrayList<String>()
@@ -30,7 +30,7 @@ object Parser {
         val orders = populateOrders(ordersStrings, items)
 
         DemoDataContent.Fiszkas = items
-        DemoDataContent.ORDERS = orders
+        DemoDataContent.ListaFiszeks = orders
         DemoDataContent.PAST_ORDERS = ArrayList()
 
         return orders
@@ -48,9 +48,9 @@ object Parser {
         return items
     }
 
-    private fun populateOrders(orderStrings: ArrayList<String>, fiszkas: List<Fiszka>): ArrayList<Order> {
+    private fun populateOrders(orderStrings: ArrayList<String>, fiszkas: List<Fiszka>): ArrayList<ListaFiszek> {
 
-        val orders = ArrayList<Order>()
+        val orders = ArrayList<ListaFiszek>()
 
         for(orderString in orderStrings){
             val order = createOrder(orderString, fiszkas)
@@ -60,7 +60,7 @@ object Parser {
         return orders
     }
 
-    private fun createOrder(orderString: String, fiszkas: List<Fiszka>): Order {
+    private fun createOrder(orderString: String, fiszkas: List<Fiszka>): ListaFiszek {
 
         val data = orderString.split(";")
 
@@ -80,7 +80,7 @@ object Parser {
             oitems.add(fiszkas.find { item -> item.word == itemstr }!!)
         }
 
-        val order = Order(oname, odate!!, oitems)
+        val order = ListaFiszek(oname, oitems)
 
         return order
     }

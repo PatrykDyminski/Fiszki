@@ -11,13 +11,13 @@ data class Fiszka(val word: String, val translation: String, val status: LearnSt
 data class CompletedItem(val fiszka: Fiszka, val isSuccess: Boolean) : Parcelable
 
 @Parcelize
-data class Order(val id: String, val placedDate: Date, val fiszkas: List<Fiszka>) : Parcelable
+data class ListaFiszek(val name: String, val fiszkas: List<Fiszka>) : Parcelable
 
 @Parcelize
-data class PastOrder(val order: Order, val status: OrderStatus) : Parcelable
+data class PastOrder(val listaFiszek: ListaFiszek, val status: OrderStatus) : Parcelable
 
 @Parcelize
-data class PickProcessSummary(val completedFiszkas: List<Fiszka>, val failedFiszkas: List<Fiszka>, val order: Order) : Parcelable
+data class PickProcessSummary(val completedFiszkas: List<Fiszka>, val failedFiszkas: List<Fiszka>, val listaFiszek: ListaFiszek) : Parcelable
 
 enum class OrderStatus {
     SUCCESS, MIXED, FAIL

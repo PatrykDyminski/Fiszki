@@ -14,7 +14,7 @@ import com.patryk.quickpick.OrderSummaryActivity
 import com.patryk.quickpick.R
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Fiszka
-import com.patryk.quickpick.data.Order
+import com.patryk.quickpick.data.ListaFiszek
 
 @ExperimentalStdlibApi
 class PickProcessFragment : Fragment() {
@@ -23,14 +23,14 @@ class PickProcessFragment : Fragment() {
 
     private lateinit var fragmentView : View
 
-    private lateinit var order: Order
+    private lateinit var listaFiszek: ListaFiszek
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             if (it.containsKey(OrderDetailFragment.ARG_ORDER_ID)) {
-                order = DemoDataContent.ORDERS.find { oo -> oo.id ==  it.getString(OrderDetailFragment.ARG_ORDER_ID) }!!
+                listaFiszek = DemoDataContent.ListaFiszeks.find { oo -> oo.name ==  it.getString(OrderDetailFragment.ARG_ORDER_ID) }!!
             }
         }
     }
@@ -42,7 +42,7 @@ class PickProcessFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_pick_process, container, false)
         fragmentView = view
 
-        viewModel.setupProcess(order)
+        viewModel.setupProcess(listaFiszek)
         val item = viewModel.getCurrentlyProcessedItem()
 
         setItem(item)

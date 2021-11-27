@@ -16,8 +16,7 @@ import com.patryk.quickpick.PickProcessActivity
 import com.patryk.quickpick.R
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Fiszka
-import com.patryk.quickpick.data.Order
-import kotlin.math.roundToInt
+import com.patryk.quickpick.data.ListaFiszek
 
 /**
  * A fragment representing a single Item detail screen.
@@ -32,14 +31,14 @@ class OrderDetailFragment : Fragment() {
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
-    private lateinit var order: Order
+    private lateinit var listaFiszek: ListaFiszek
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             if (it.containsKey(ARG_ORDER_ID)) {
-                order = DemoDataContent.ORDERS.find { oo -> oo.id ==  it.getString(ARG_ORDER_ID) }!!
+                listaFiszek = DemoDataContent.ListaFiszeks.find { oo -> oo.name ==  it.getString(ARG_ORDER_ID) }!!
             }
         }
     }
@@ -53,7 +52,7 @@ class OrderDetailFragment : Fragment() {
         val rootView = inflater.inflate(R.layout.fragment_order_detail, container, false)
 
         viewManager = LinearLayoutManager(context)
-        viewAdapter = MyAdapter(order.fiszkas)
+        viewAdapter = MyAdapter(listaFiszek.fiszkas)
         recyclerView = rootView.findViewById<RecyclerView>(R.id.itemsInOrderRecycler).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -67,7 +66,7 @@ class OrderDetailFragment : Fragment() {
     }
 
     private fun bindFields(rootView: View){
-        rootView.findViewById<TextView>(R.id.pageTitle).text = "Order " + order.id + " - " + order.fiszkas.size.toString() + " to pick"
+        rootView.findViewById<TextView>(R.id.pageTitle).text = "Order " + listaFiszek.name + " - " + listaFiszek.fiszkas.size.toString() + " to pick"
 
         val dimensionsText = rootView.findViewById<TextView>(R.id.dimensions)
         dimensionsText.text = "Box - 10 x 50 x 10 cm"
@@ -80,7 +79,7 @@ class OrderDetailFragment : Fragment() {
         val startPickingButton: Button = rootView.findViewById(R.id.start_picking)
         startPickingButton.setOnClickListener {
             val intent = Intent(context, PickProcessActivity::class.java).apply {
-                putExtra(ARG_ORDER_ID, order.id)
+                putExtra(ARG_ORDER_ID, listaFiszek.name)
             }
             context?.startActivity(intent)
         }
