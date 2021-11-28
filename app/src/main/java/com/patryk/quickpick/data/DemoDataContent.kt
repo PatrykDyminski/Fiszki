@@ -4,6 +4,7 @@ import java.util.ArrayList
 
 object DemoDataContent {
 
+    var ListaFiszekFull: MutableList<ListaFiszek> = ArrayList()
     var ListaFiszeks: MutableList<ListaFiszek> = ArrayList()
     var PAST_ORDERS: MutableList<PastOrder> = ArrayList()
     var Fiszkas: MutableList<Fiszka> = ArrayList()
@@ -24,6 +25,7 @@ object DemoDataContent {
 
     private fun addOrder(listaFiszek: ListaFiszek) {
         ListaFiszeks.add(listaFiszek)
+        ListaFiszekFull.add(listaFiszek)
     }
 
     fun createOrder(position: Int): ListaFiszek {

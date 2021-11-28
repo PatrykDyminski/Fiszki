@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_item_list.xml" value="0.21302083333333333" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_order_list.xml" value="0.22" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/component_appbar.xml" value="0.10778985507246377" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/component_bottomnav.xml" value="0.10778985507246377" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_completed_item.xml" value="0.5" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_item_in_order.xml" value="0.5" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/fragment_order_detail.xml" value="0.46121057118499575" />

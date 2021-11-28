@@ -6,6 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,7 +19,7 @@ import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.Parser
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import java.io.File
-
+import java.util.*
 
 /**
  * An activity representing a list of Pings. This activity
@@ -41,9 +42,26 @@ class ListaListFiszekActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.title = title
 
-        bottomNav = findViewById(R.id.bottomNav)
-        bottomNav.selectedItemId = R.id.home
-        setBottomNav()
+        val searchView = findViewById<SearchView>(R.id.searchView)
+        searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                DemoDataContent.ListaFiszeks = DemoDataContent.ListaFiszekFull
+                    .filter { it.name.toLowerCase(Locale.ROOT).contains(query?.toLowerCase(Locale.ROOT)!!) }
+                    .toMutableList()
+                setupRecyclerView(findViewById(R.id.item_list))
+                return true
+            }
+        })
+
+        searchView.setOnCloseListener {
+            DemoDataContent.ListaFiszeks = DemoDataContent.ListaFiszekFull
+            setupRecyclerView(findViewById(R.id.item_list))
+            false;
+        }
 
         if (findViewById<NestedScrollView>(R.id.item_detail_container) != null) {
             // The detail container view will be present only in the
@@ -124,30 +142,6 @@ class ListaListFiszekActivity : AppCompatActivity() {
         }
 
         return file
-    }
-
-    private fun setBottomNav() {
-        bottomNav.setOnNavigationItemSelectedListener(object :
-                BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                when (item.itemId) {
-                    R.id.home -> {
-                        return true
-                    }
-                    R.id.completed -> {
-                        val intent = Intent(this@ListaListFiszekActivity, PastOrdersActivity::class.java)
-                        this@ListaListFiszekActivity.startActivity(intent)
-                        return true
-                    }
-                    R.id.items -> {
-                        val intent = Intent(this@ListaListFiszekActivity, ListaWszystkichFiszekActivity::class.java)
-                        this@ListaListFiszekActivity.startActivity(intent)
-                        return true
-                    }
-                }
-                return false
-            }
-        })
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {

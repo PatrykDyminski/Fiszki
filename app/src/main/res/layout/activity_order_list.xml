@@ -10,14 +10,19 @@
 
     <include layout="@layout/component_appbar"/>
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="64dp"/>
+
     <FrameLayout
+        android:layout_marginTop="48dp"
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <include layout="@layout/order_list" />
     </FrameLayout>
-
-    <include layout="@layout/component_bottomnav"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
