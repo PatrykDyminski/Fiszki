@@ -9,9 +9,9 @@ class PickProcess(listaFiszek: ListaFiszek) {
 
     private var _listaFiszek : ListaFiszek = listaFiszek
 
-    private var pendingFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
-    private var completedFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
-    private var failedFiszkas: MutableList<Fiszka> = mutableListOf<Fiszka>()
+    private var pendingFiszkas: MutableList<Fiszka> = mutableListOf()
+    private var completedFiszkas: MutableList<Fiszka> = mutableListOf()
+    private var failedFiszkas: MutableList<Fiszka> = mutableListOf()
     private var currentFiszka: Fiszka
 
     private var isProcessFinished: Boolean = false

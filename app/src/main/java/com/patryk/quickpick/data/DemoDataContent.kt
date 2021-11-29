@@ -5,7 +5,7 @@ import java.util.ArrayList
 object DemoDataContent {
 
     var ListaFiszekFull: MutableList<ListaFiszek> = ArrayList()
-    var ListaFiszeks: MutableList<ListaFiszek> = ArrayList()
+    var ListaFiszek: MutableList<ListaFiszek> = ArrayList()
     var PAST_ORDERS: MutableList<PastOrder> = ArrayList()
     var Fiszkas: MutableList<Fiszka> = ArrayList()
 
@@ -24,7 +24,7 @@ object DemoDataContent {
     }
 
     private fun addOrder(listaFiszek: ListaFiszek) {
-        ListaFiszeks.add(listaFiszek)
+        ListaFiszek.add(listaFiszek)
         ListaFiszekFull.add(listaFiszek)
     }
 
@@ -33,7 +33,7 @@ object DemoDataContent {
     }
 
     private fun makeFiszki(position: Int): List<Fiszka> {
-        var fiszki = mutableListOf<Fiszka>()
+        val fiszki = mutableListOf<Fiszka>()
 
         for(i in 1..position){
             val fiszka = Fiszka("word:$i", "translation:$i", LearnStatus.LEARNED)

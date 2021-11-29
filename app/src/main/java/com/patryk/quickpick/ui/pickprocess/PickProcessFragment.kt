@@ -30,7 +30,7 @@ class PickProcessFragment : Fragment() {
 
         arguments?.let {
             if (it.containsKey(OrderDetailFragment.ARG_ORDER_ID)) {
-                listaFiszek = DemoDataContent.ListaFiszeks.find { oo -> oo.name ==  it.getString(OrderDetailFragment.ARG_ORDER_ID) }!!
+                listaFiszek = DemoDataContent.ListaFiszek.find { oo -> oo.name ==  it.getString(OrderDetailFragment.ARG_ORDER_ID) }!!
             }
         }
     }
@@ -49,10 +49,6 @@ class PickProcessFragment : Fragment() {
         assignButtons(view)
 
         return view
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
 
     private fun assignButtons(view: View){

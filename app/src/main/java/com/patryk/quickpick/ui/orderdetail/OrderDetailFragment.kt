@@ -18,12 +18,6 @@ import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.ListaFiszek
 
-/**
- * A fragment representing a single Item detail screen.
- * This fragment is either contained in a [OrderListActivity]
- * in two-pane mode (on tablets) or a [OrderDetailActivity]
- * on handsets.
- */
 @ExperimentalStdlibApi
 class OrderDetailFragment : Fragment() {
 
@@ -38,7 +32,7 @@ class OrderDetailFragment : Fragment() {
 
         arguments?.let {
             if (it.containsKey(ARG_ORDER_ID)) {
-                listaFiszek = DemoDataContent.ListaFiszeks.find { oo -> oo.name ==  it.getString(ARG_ORDER_ID) }!!
+                listaFiszek = DemoDataContent.ListaFiszek.find { oo -> oo.name ==  it.getString(ARG_ORDER_ID) }!!
             }
         }
     }

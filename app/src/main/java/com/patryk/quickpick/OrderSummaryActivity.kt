@@ -44,16 +44,20 @@ class OrderSummaryActivity : AppCompatActivity() {
         val finishButton: Button = findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
 
-            val status: OrderStatus = if(summary!!.failedFiszkas.isEmpty()){
-                OrderStatus.SUCCESS
-            }else if(summary.completedFiszkas.isEmpty()){
-                OrderStatus.FAIL
-            }else{
-                OrderStatus.MIXED
+            val status: OrderStatus = when {
+                summary!!.failedFiszkas.isEmpty() -> {
+                    OrderStatus.SUCCESS
+                }
+                summary.completedFiszkas.isEmpty() -> {
+                    OrderStatus.FAIL
+                }
+                else -> {
+                    OrderStatus.MIXED
+                }
             }
 
             DemoDataContent.PAST_ORDERS.add(PastOrder(summary.listaFiszek, status))
-            DemoDataContent.ListaFiszeks.remove(summary.listaFiszek)
+            DemoDataContent.ListaFiszek.remove(summary.listaFiszek)
 
             val intent = Intent(this, ListaListFiszekActivity::class.java)
             startActivity(intent)

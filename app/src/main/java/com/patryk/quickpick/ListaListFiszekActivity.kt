@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.Parser
@@ -32,7 +31,6 @@ import java.util.*
 class ListaListFiszekActivity : AppCompatActivity() {
 
     private var twoPane: Boolean = false
-    private lateinit var bottomNav : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +47,7 @@ class ListaListFiszekActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                DemoDataContent.ListaFiszeks = DemoDataContent.ListaFiszekFull
+                DemoDataContent.ListaFiszek = DemoDataContent.ListaFiszekFull
                     .filter { it.name.toLowerCase(Locale.ROOT).contains(query?.toLowerCase(Locale.ROOT)!!) }
                     .toMutableList()
                 setupRecyclerView(findViewById(R.id.item_list))
@@ -58,9 +56,9 @@ class ListaListFiszekActivity : AppCompatActivity() {
         })
 
         searchView.setOnCloseListener {
-            DemoDataContent.ListaFiszeks = DemoDataContent.ListaFiszekFull
+            DemoDataContent.ListaFiszek = DemoDataContent.ListaFiszekFull
             setupRecyclerView(findViewById(R.id.item_list))
-            false;
+            false
         }
 
         if (findViewById<NestedScrollView>(R.id.item_detail_container) != null) {
@@ -79,21 +77,21 @@ class ListaListFiszekActivity : AppCompatActivity() {
         return true
     }
 
-    var sortOrder: Boolean = true;
+    private var sortOrder: Boolean = true
 
     override fun onOptionsItemSelected(item: MenuItem) =
             when (item.itemId) {
                 R.id.sort -> {
 
                     if (sortOrder){
-                        DemoDataContent.ListaFiszeks.sortBy { it.name }
+                        DemoDataContent.ListaFiszek.sortBy { it.name }
                         sortOrder = !sortOrder
 
                         showToast("Sorted by name")
 
                     }else{
-                        DemoDataContent.ListaFiszeks.sortBy { it.name }
-                        DemoDataContent.ListaFiszeks.reverse()
+                        DemoDataContent.ListaFiszek.sortBy { it.name }
+                        DemoDataContent.ListaFiszek.reverse()
                         sortOrder = !sortOrder
 
                         showToast("Sorted by name")
@@ -122,7 +120,7 @@ class ListaListFiszekActivity : AppCompatActivity() {
 
                 Parser.parseFile(file)
 
-                showToast("imported "+DemoDataContent.ListaFiszeks.size.toString()+" orders")
+                showToast("imported "+DemoDataContent.ListaFiszek.size.toString()+" orders")
 
                 setupRecyclerView(findViewById(R.id.item_list))
             }
@@ -145,7 +143,7 @@ class ListaListFiszekActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView(recyclerView: RecyclerView) {
-        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DemoDataContent.ListaFiszeks, twoPane)
+        recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DemoDataContent.ListaFiszek, twoPane)
     }
 
     @OptIn(ExperimentalStdlibApi::class)

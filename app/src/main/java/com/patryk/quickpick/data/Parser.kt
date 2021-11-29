@@ -30,7 +30,7 @@ object Parser {
         val orders = populateOrders(ordersStrings, items)
 
         DemoDataContent.Fiszkas = items
-        DemoDataContent.ListaFiszeks = orders
+        DemoDataContent.ListaFiszek = orders
         DemoDataContent.PAST_ORDERS = ArrayList()
 
         return orders
