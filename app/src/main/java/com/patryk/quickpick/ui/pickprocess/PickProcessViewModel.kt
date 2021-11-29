@@ -17,20 +17,28 @@ class PickProcessViewModel : ViewModel() {
         pickProcess = PickProcess(processedListaFiszek)
     }
 
-    fun getCurrentlyProcessedItem(): Fiszka {
-        return pickProcess.getCurrentlyProcessedItem()
+    fun getTotalFiszkiNumber() : Int{
+        return pickProcess.getTotalFiszkiNumber()
+    }
+
+    fun getLearnedFiszkiNumber() : Int{
+        return pickProcess.getLearnedFiszkiNumber()
+    }
+
+    fun getCurrentlyProcessedFiszka(): Fiszka {
+        return pickProcess.getCurrentlyProcessedFiszka()
     }
 
     fun isProcessFinished() : Boolean {
         return pickProcess.getIsProcessFinished()
     }
 
-    fun itemPicked(){
-        pickProcess.pickItem()
+    fun wordLearned(){
+        pickProcess.wordLearned()
     }
 
-    fun problemWithItem(){
-        pickProcess.failItem()
+    fun wordNotLearned(){
+        pickProcess.wordNotLearned()
     }
 
     fun getSummary(): PickProcessSummary {

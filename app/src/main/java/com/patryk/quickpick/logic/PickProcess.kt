@@ -9,43 +9,51 @@ class PickProcess(listaFiszek: ListaFiszek) {
 
     private var _listaFiszek : ListaFiszek = listaFiszek
 
-    private var pendingFiszkas: MutableList<Fiszka> = mutableListOf()
-    private var completedFiszkas: MutableList<Fiszka> = mutableListOf()
+    private var pendingFiszki: MutableList<Fiszka> = mutableListOf()
+    private var learnedFiszki: MutableList<Fiszka> = mutableListOf()
     private var failedFiszkas: MutableList<Fiszka> = mutableListOf()
     private var currentFiszka: Fiszka
 
     private var isProcessFinished: Boolean = false
 
     init{
-        pendingFiszkas.addAll(listaFiszek.fiszkas)
-        currentFiszka = pendingFiszkas.removeFirst()
+        pendingFiszki.addAll(listaFiszek.fiszkas)
+        currentFiszka = pendingFiszki.removeFirst()
     }
 
-    fun getCurrentlyProcessedItem() : Fiszka{
+    fun getTotalFiszkiNumber() : Int{
+        return _listaFiszek.fiszkas.size
+    }
+
+    fun getLearnedFiszkiNumber() : Int{
+        return learnedFiszki.size
+    }
+
+    fun getCurrentlyProcessedFiszka() : Fiszka {
         return currentFiszka
     }
 
     fun getPickingSummary(): PickProcessSummary {
-        return PickProcessSummary(completedFiszkas, failedFiszkas, _listaFiszek)
+        return PickProcessSummary(learnedFiszki, failedFiszkas, _listaFiszek)
     }
 
     fun getIsProcessFinished() : Boolean{
         return isProcessFinished
     }
 
-    fun pickItem(){
-        completedFiszkas.add(currentFiszka)
-        if(pendingFiszkas.size > 0){
-            currentFiszka = pendingFiszkas.removeFirst()
-        }else{
-            endProcess()
-        }
+    fun wordLearned(){
+        learnedFiszki.add(currentFiszka)
+        nextFiszka()
     }
 
-    fun failItem(){
-        failedFiszkas.add(currentFiszka)
-        if(pendingFiszkas.size > 0){
-            currentFiszka = pendingFiszkas.removeFirst()
+    fun wordNotLearned() {
+        pendingFiszki.add(currentFiszka)
+        nextFiszka()
+    }
+
+    fun nextFiszka(){
+        if(pendingFiszki.size > 0){
+            currentFiszka = pendingFiszki.removeFirst()
         }else{
             endProcess()
         }

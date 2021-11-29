@@ -8,77 +8,108 @@
     tools:context=".ui.pickprocess.PickProcessFragment">
 
     <TextView
-        android:id="@+id/itemNameLabel"
-        android:layout_width="wrap_content"
+        android:id="@+id/wordLabel"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
+        android:autoSizeMaxTextSize="48sp"
+        android:autoSizeMinTextSize="22sp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/rounded_corner"
+        android:paddingLeft="16sp"
+        android:paddingTop="32sp"
+        android:paddingRight="16sp"
+        android:paddingBottom="32sp"
         android:text="Item Name"
+        android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="48sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/collectionName" />
+
+    <Button
+        android:id="@+id/wordLearnedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#4CAF50"
+        android:text="Dobrze"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learnLevelLabel" />
+
+    <Button
+        android:id="@+id/endButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="#03DAC5"
+        android:text="Zakończ"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learnedLabel" />
+
+    <Button
+        android:id="@+id/wordMediumLearnedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFC107"
+        android:text="Średnio"
+        app:layout_constraintEnd_toStartOf="@+id/wordLearnedButton"
+        app:layout_constraintStart_toEndOf="@+id/wordNotLearnedButton"
+        app:layout_constraintTop_toBottomOf="@+id/learnLevelLabel" />
+
+    <Button
+        android:id="@+id/wordNotLearnedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF5722"
+        android:text="Słabo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/learnLevelLabel" />
+
+    <TextView
+        android:id="@+id/collectionName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Nazwa Kolekcji"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/barcodeLabel"
+        android:id="@+id/learnLevelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="barcode:"
+        android:layout_marginTop="128dp"
+        android:text="Oznacz stopień opanowania:"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemNameLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/wordLabel" />
 
     <TextView
-        android:id="@+id/categoryLabel"
+        android:id="@+id/learnedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="category:"
+        android:layout_marginTop="64dp"
+        android:text="Opanowano 0/13"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barcodeLabel" />
-
-    <TextView
-        android:id="@+id/weightLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="weight:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryLabel" />
-
-    <TextView
-        android:id="@+id/dimensionsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="dimensions:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightLabel" />
-
-    <Button
-        android:id="@+id/pickSuccessButton"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#4CAF50"
-        android:text="Item Picked"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/pickProblemButton"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#FF5722"
-        android:text="Problem with item"
-        app:layout_constraintBottom_toTopOf="@+id/pickSuccessButton"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/wordMediumLearnedButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

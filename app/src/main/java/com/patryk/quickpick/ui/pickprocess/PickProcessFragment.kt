@@ -25,6 +25,8 @@ class PickProcessFragment : Fragment() {
 
     private lateinit var listaFiszek: ListaFiszek
 
+    private lateinit var currentFiszka: Fiszka
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,7 +45,7 @@ class PickProcessFragment : Fragment() {
         fragmentView = view
 
         viewModel.setupProcess(listaFiszek)
-        val item = viewModel.getCurrentlyProcessedItem()
+        val item = viewModel.getCurrentlyProcessedFiszka()
 
         setItem(item)
         assignButtons(view)
@@ -53,25 +55,42 @@ class PickProcessFragment : Fragment() {
 
     private fun assignButtons(view: View){
 
-        val pickSuccessButton: Button = view.findViewById(R.id.pickSuccessButton)
-        pickSuccessButton.setOnClickListener {
-            viewModel.itemPicked()
-            handleNextItem()
+        val wordLearnedButton = view.findViewById<Button>(R.id.wordLearnedButton)
+        wordLearnedButton.setOnClickListener {
+            viewModel.wordLearned()
+            handleNextFiszka()
         }
 
-        val pickProblemButton: Button = view.findViewById(R.id.pickProblemButton)
-        pickProblemButton.setOnClickListener {
-            viewModel.problemWithItem()
-            handleNextItem()
+        val wordNotLearnedButton: Button = view.findViewById(R.id.wordNotLearnedButton)
+        wordNotLearnedButton.setOnClickListener {
+            viewModel.wordNotLearned()
+            handleNextFiszka()
+        }
+
+        val wordMediumLearnedButton: Button = view.findViewById(R.id.wordMediumLearnedButton)
+        wordMediumLearnedButton.setOnClickListener {
+            viewModel.wordNotLearned()
+            handleNextFiszka()
+        }
+
+        val fiszka: TextView = view.findViewById(R.id.wordLabel)
+        fiszka.setOnClickListener {
+            flip(fiszka)
         }
     }
 
-    private fun handleNextItem(){
+    private fun flip(fiszka: TextView) {
+        if(fiszka.text == currentFiszka.word)
+            fiszka.text = currentFiszka.translation
+        else
+            fiszka.text = currentFiszka.word
+    }
+
+    private fun handleNextFiszka(){
         if(viewModel.isProcessFinished()){
             goToSummary()
         }else{
-            val nextItem = viewModel.getCurrentlyProcessedItem()
-            setItem(nextItem)
+            setItem(viewModel.getCurrentlyProcessedFiszka())
         }
     }
 
@@ -84,8 +103,14 @@ class PickProcessFragment : Fragment() {
     }
 
     private fun setItem(fiszka: Fiszka){
-        fragmentView.findViewById<TextView>(R.id.itemNameLabel).text = fiszka.word
-        fragmentView.findViewById<TextView>(R.id.categoryLabel).text = fiszka.translation
+        currentFiszka = fiszka;
+        fragmentView.findViewById<TextView>(R.id.wordLabel).text = fiszka.word
+
+        updateStatusLabel()
+    }
+
+    private fun updateStatusLabel() {
+        fragmentView.findViewById<TextView>(R.id.learnedLabel).text = "Opanowano: " + viewModel.getLearnedFiszkiNumber() + "/" + viewModel.getTotalFiszkiNumber()
     }
 
     companion object {
