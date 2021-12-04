@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.patryk.quickpick.OrderDetailActivity
 import com.patryk.quickpick.PickProcessActivity
 import com.patryk.quickpick.R
+import com.patryk.quickpick.TestProcessActivity
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.ListaFiszek
@@ -72,9 +73,12 @@ class OrderDetailFragment : Fragment() {
             context?.startActivity(intent)
         }
 
-        val backToListButton: Button = rootView.findViewById(R.id.back_to_list)
-        backToListButton.setOnClickListener {
-            (activity as OrderDetailActivity?)?.fBack()
+        val startTestButton: Button = rootView.findViewById(R.id.start_test)
+        startTestButton.setOnClickListener {
+            val intent = Intent(context, TestProcessActivity::class.java).apply {
+                putExtra(ARG_ORDER_ID, listaFiszek.name)
+            }
+            context?.startActivity(intent)
         }
     }
 

@@ -18,10 +18,19 @@
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
             android:name=".OrderSummaryActivity"
+            android:label="Podsumowanie"
+            android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
+        <activity
+            android:name=".TestSummaryActivity"
+            android:label="Wyniki"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
             android:name=".PickProcessActivity"
             android:label="Nauka"
+            android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
+        <activity
+            android:name=".TestProcessActivity"
+            android:label="Test"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
             android:name=".ListaListFiszekActivity"
