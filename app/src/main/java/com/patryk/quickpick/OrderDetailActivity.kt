@@ -32,10 +32,6 @@ class OrderDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun fBack(){
-        navigateUpTo(Intent(this, ListaListFiszekActivity::class.java))
-    }
-
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         android.R.id.home -> {
             navigateUpTo(Intent(this, ListaListFiszekActivity::class.java))

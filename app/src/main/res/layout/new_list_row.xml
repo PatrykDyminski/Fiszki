@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/new_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="8dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+
+    <EditText
+        android:id="@+id/wordInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="4dp"
+        android:layout_weight="1"
+        android:background="#E5E5E5"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:text="Słowo" />
+
+    <EditText
+        android:id="@+id/translationInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_weight="1"
+        android:background="#E5E5E5"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingStart="8dp"
+        android:paddingRight="8dp"
+        android:text="Znaczenie" />
+</LinearLayout>

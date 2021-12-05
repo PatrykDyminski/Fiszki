@@ -21,6 +21,10 @@
             android:label="Podsumowanie"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
+            android:name=".NewListActivity"
+            android:label="Nowa lista słówek"
+            android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
+        <activity
             android:name=".TestSummaryActivity"
             android:label="Wyniki"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>

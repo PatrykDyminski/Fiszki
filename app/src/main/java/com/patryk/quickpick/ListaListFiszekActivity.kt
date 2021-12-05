@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.Parser
@@ -21,14 +22,6 @@ import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import java.io.File
 import java.util.*
 
-/**
- * An activity representing a list of Pings. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a [OrderDetailActivity] representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
- */
 class ListaListFiszekActivity : AppCompatActivity() {
 
     private var twoPane: Boolean = false
@@ -71,6 +64,13 @@ class ListaListFiszekActivity : AppCompatActivity() {
             // activity should be in two-pane mode.
             twoPane = true
         }
+
+        val fab = findViewById<ExtendedFloatingActionButton>(R.id.newListFab)
+        fab.setOnClickListener {
+            val intent = Intent(this, NewListActivity::class.java)
+            startActivity(intent)
+        }
+
 
         setupRecyclerView(findViewById(R.id.item_list))
     }

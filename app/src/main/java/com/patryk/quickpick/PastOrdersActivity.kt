@@ -36,7 +36,6 @@ class PastOrdersActivity : AppCompatActivity() {
 
         bottomNav = findViewById(R.id.bottomNav)
         bottomNav.selectedItemId = R.id.completed
-        setBottomNav()
 
         viewManager = LinearLayoutManager(this)
         viewAdapter = PastOrdersAdapter(DemoDataContent.PAST_ORDERS)
@@ -85,29 +84,5 @@ class PastOrdersActivity : AppCompatActivity() {
         }
 
         override fun getItemCount() = orders.size
-    }
-
-    private fun setBottomNav() {
-        bottomNav.setOnNavigationItemSelectedListener(object :
-            BottomNavigationView.OnNavigationItemSelectedListener {
-            override fun onNavigationItemSelected(item: MenuItem): Boolean {
-                when (item.itemId) {
-                    R.id.home -> {
-                        val intent = Intent(this@PastOrdersActivity, ListaListFiszekActivity::class.java)
-                        this@PastOrdersActivity.startActivity(intent)
-                        return true
-                    }
-                    R.id.completed -> {
-                        return true
-                    }
-                    R.id.items -> {
-                        val intent = Intent(this@PastOrdersActivity, ListaWszystkichFiszekActivity::class.java)
-                        this@PastOrdersActivity.startActivity(intent)
-                        return true
-                    }
-                }
-                return false
-            }
-        })
     }
 }

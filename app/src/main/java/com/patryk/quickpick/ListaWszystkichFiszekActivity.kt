@@ -12,6 +12,7 @@ import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
 //Lista słów
+@ExperimentalStdlibApi
 class ListaWszystkichFiszekActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
@@ -20,7 +21,6 @@ class ListaWszystkichFiszekActivity : AppCompatActivity() {
 
     private lateinit var bottomNav : BottomNavigationView
 
-    @ExperimentalStdlibApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_list)
