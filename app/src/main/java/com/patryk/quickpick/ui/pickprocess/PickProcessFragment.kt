@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.patryk.quickpick.ListaListFiszekActivity
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.OrderSummaryActivity
 import com.patryk.quickpick.R
@@ -71,6 +72,12 @@ class PickProcessFragment : Fragment() {
         wordMediumLearnedButton.setOnClickListener {
             viewModel.wordNotLearned()
             handleNextFiszka()
+        }
+
+        val end: Button = view.findViewById(R.id.nextButton)
+        end.setOnClickListener {
+            val intent = Intent(context, ListaListFiszekActivity::class.java)
+            context?.startActivity(intent)
         }
 
         val fiszka: TextView = view.findViewById(R.id.wordLabel)

@@ -15,11 +15,11 @@
         android:layout_marginRight="4dp"
         android:layout_weight="1"
         android:background="#E5E5E5"
+        android:hint="Słowo"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:text="Słowo" />
+        android:paddingRight="8dp" />
 
     <EditText
         android:id="@+id/translationInput"
@@ -28,9 +28,9 @@
         android:layout_marginLeft="4dp"
         android:layout_weight="1"
         android:background="#E5E5E5"
+        android:hint="Znaczenie"
         android:inputType="text"
         android:minHeight="48dp"
         android:paddingStart="8dp"
-        android:paddingRight="8dp"
-        android:text="Znaczenie" />
+        android:paddingRight="8dp" />
 </LinearLayout>

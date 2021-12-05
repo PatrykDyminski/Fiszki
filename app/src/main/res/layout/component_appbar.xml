@@ -1,7 +1,7 @@
 <com.google.android.material.appbar.AppBarLayout android:id="@+id/app_bar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:theme="@style/Theme.QuickPick.AppBarOverlay"
+    android:theme="@style/Theme.QuickPick"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -9,6 +9,6 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:popupTheme="@style/Theme.QuickPick.PopupOverlay" />
+        app:popupTheme="@style/Theme.QuickPick" />
 
 </com.google.android.material.appbar.AppBarLayout>

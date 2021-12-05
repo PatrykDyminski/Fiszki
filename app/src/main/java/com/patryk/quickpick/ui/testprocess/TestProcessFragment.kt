@@ -10,20 +10,17 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import com.patryk.quickpick.R
 import com.patryk.quickpick.TestSummaryActivity
 import com.patryk.quickpick.data.*
+import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 
 @ExperimentalStdlibApi
 class TestProcessFragment : Fragment() {
 
     private val viewModel: TestProcessViewModel by viewModels()
-
     private lateinit var fragmentView : View
-
     private lateinit var listaFiszek: ListaFiszek
-
     private lateinit var currentFiszka: Fiszka
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,12 +55,6 @@ class TestProcessFragment : Fragment() {
         nextButton.setOnClickListener {
             handleNextWord()
         }
-
-        val input: EditText = fragmentView.findViewById(R.id.translation_input)
-
-        input.setOnFocusChangeListener { v, hasFocus -> if (hasFocus){
-          input.text.clear()
-        } }
     }
 
     private fun handleNextWord(){

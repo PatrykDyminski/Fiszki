@@ -10,10 +10,4 @@
         android:title="sort"
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/parse"
-        android:icon="@drawable/ic_add"
-        android:title="parse"
-        app:showAsAction="ifRoom"/>
-
 </menu>

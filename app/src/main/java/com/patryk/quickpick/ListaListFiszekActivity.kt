@@ -58,10 +58,6 @@ class ListaListFiszekActivity : AppCompatActivity() {
         }
 
         if (findViewById<NestedScrollView>(R.id.item_detail_container) != null) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w900dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
             twoPane = true
         }
 
@@ -101,14 +97,6 @@ class ListaListFiszekActivity : AppCompatActivity() {
                     }
 
                     setupRecyclerView(findViewById(R.id.item_list))
-
-                    true
-                }
-                R.id.parse -> {
-
-                    val intent = Intent(Intent.ACTION_GET_CONTENT)
-                    intent.type = "*/*"
-                    startActivityForResult(intent, 1)
 
                     true
                 }

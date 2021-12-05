@@ -59,11 +59,6 @@ class NewListActivity : AppCompatActivity() {
         nextRow.setOnClickListener {
             addRow()
         }
-
-        val input: EditText = findViewById(R.id.collectionNameInput)
-        input.setOnFocusChangeListener { v, hasFocus -> if (hasFocus){
-            input.text.clear()
-        } }
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
