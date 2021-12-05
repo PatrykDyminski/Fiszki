@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
-import com.patryk.quickpick.OrderSummaryActivity
 import com.patryk.quickpick.R
 import com.patryk.quickpick.TestSummaryActivity
 import com.patryk.quickpick.data.*

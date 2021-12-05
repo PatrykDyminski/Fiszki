@@ -25,4 +25,12 @@
         <include layout="@layout/order_list" />
     </FrameLayout>
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/newListFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:layout_gravity="bottom|center"
+        android:text="Dodaj kolekcję" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
