@@ -9,10 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickPick">
+
+        <activity
+            android:name=".MainPageActivity"
+            android:label="Naucz Się!"
+            android:theme="@style/Theme.QuickPick.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".PastOrdersActivity"
-            android:theme="@style/Theme.QuickPick.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
             android:name=".ListaWszystkichFiszekActivity"
             android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
@@ -39,22 +48,11 @@
         <activity
             android:name=".ListaListFiszekActivity"
             android:label="@string/app_name"
-            android:theme="@style/Theme.QuickPick.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
         <activity
             android:name=".OrderDetailActivity"
             android:label="@string/title_item_detail"
-            android:parentActivityName=".ListaListFiszekActivity"
-            android:theme="@style/Theme.QuickPick.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.patryk.quickpick.ListaListFiszekActivity" />
-        </activity>
+            android:theme="@style/Theme.QuickPick.NoActionBar"></activity>
     </application>
 
 </manifest>
