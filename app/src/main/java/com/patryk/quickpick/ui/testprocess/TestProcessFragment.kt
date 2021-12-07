@@ -43,6 +43,9 @@ class TestProcessFragment : Fragment() {
         viewModel.setupProcess(listaFiszek)
         val item = viewModel.getCurrentlyProcessedFiszka()
 
+        val nameLabel: TextView = fragmentView.findViewById(R.id.collectionName)
+        nameLabel.text = listaFiszek.name
+
         setItem(item)
         assignButtons()
 

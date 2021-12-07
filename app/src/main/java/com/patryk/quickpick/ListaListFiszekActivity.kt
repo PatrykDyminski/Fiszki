@@ -35,6 +35,7 @@ class ListaListFiszekActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         toolbar.title = title
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val searchView = findViewById<SearchView>(R.id.searchView)
         searchView.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
@@ -98,6 +99,10 @@ class ListaListFiszekActivity : AppCompatActivity() {
 
                     setupRecyclerView(findViewById(R.id.item_list))
 
+                    true
+                }
+                android.R.id.home -> {
+                    onBackPressed()
                     true
                 }
                 else -> super.onOptionsItemSelected(item)
