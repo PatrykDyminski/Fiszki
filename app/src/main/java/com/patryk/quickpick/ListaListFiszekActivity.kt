@@ -102,7 +102,8 @@ class ListaListFiszekActivity : AppCompatActivity() {
                     true
                 }
                 android.R.id.home -> {
-                    onBackPressed()
+                    val intent = Intent(this, MainPageActivity::class.java)
+                    startActivity(intent)
                     true
                 }
                 else -> super.onOptionsItemSelected(item)
