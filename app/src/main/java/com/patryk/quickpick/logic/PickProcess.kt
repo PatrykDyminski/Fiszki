@@ -1,6 +1,7 @@
 package com.patryk.quickpick.logic
 
 import com.patryk.quickpick.data.Fiszka
+import com.patryk.quickpick.data.LearnStatus
 import com.patryk.quickpick.data.ListaFiszek
 import com.patryk.quickpick.data.PickProcessSummary
 
@@ -11,12 +12,14 @@ class PickProcess(listaFiszek: ListaFiszek) {
 
     private var pendingFiszki: MutableList<Fiszka> = mutableListOf()
     private var learnedFiszki: MutableList<Fiszka> = mutableListOf()
-    private var failedFiszkas: MutableList<Fiszka> = mutableListOf()
     private var currentFiszka: Fiszka
 
     private var isProcessFinished: Boolean = false
 
     init{
+        listaFiszek.fiszkas.forEach { fiszka ->
+            fiszka.status = LearnStatus.NOT_LEARNED
+        }
         pendingFiszki.addAll(listaFiszek.fiszkas)
         currentFiszka = pendingFiszki.removeFirst()
     }
@@ -34,7 +37,8 @@ class PickProcess(listaFiszek: ListaFiszek) {
     }
 
     fun getPickingSummary(): PickProcessSummary {
-        return PickProcessSummary(learnedFiszki, failedFiszkas, _listaFiszek)
+        pendingFiszki.add(currentFiszka)
+        return PickProcessSummary(learnedFiszki, pendingFiszki, _listaFiszek)
     }
 
     fun getIsProcessFinished() : Boolean{
@@ -42,16 +46,24 @@ class PickProcess(listaFiszek: ListaFiszek) {
     }
 
     fun wordLearned(){
+        currentFiszka.status = LearnStatus.LEARNED
         learnedFiszki.add(currentFiszka)
         nextFiszka()
     }
 
-    fun wordNotLearned() {
+    fun wordMixed() {
+        currentFiszka.status = LearnStatus.MIXED
         pendingFiszki.add(currentFiszka)
         nextFiszka()
     }
 
-    fun nextFiszka(){
+    fun wordNotLearned() {
+        currentFiszka.status = LearnStatus.NOT_LEARNED
+        pendingFiszki.add(currentFiszka)
+        nextFiszka()
+    }
+
+    private fun nextFiszka(){
         if(pendingFiszki.size > 0){
             currentFiszka = pendingFiszki.removeFirst()
         }else{

@@ -37,6 +37,10 @@ class PickProcessViewModel : ViewModel() {
         pickProcess.wordLearned()
     }
 
+    fun wordMixed(){
+        pickProcess.wordMixed()
+    }
+
     fun wordNotLearned(){
         pickProcess.wordNotLearned()
     }

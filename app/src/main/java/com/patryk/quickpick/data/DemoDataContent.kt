@@ -36,7 +36,7 @@ object DemoDataContent {
         val fiszki = mutableListOf<Fiszka>()
 
         for(i in 1..position){
-            val fiszka = Fiszka("word:$i", "translation:$i", LearnStatus.LEARNED)
+            val fiszka = Fiszka("word:$i", "translation:$i", LearnStatus.NOT_LEARNED)
             fiszki.add(fiszka)
             Fiszkas.add(fiszka)
         }

@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class Fiszka(val word: String, val translation: String, val status: LearnStatus) : Parcelable
+data class Fiszka(val word: String, val translation: String, var status: LearnStatus) : Parcelable
 
 @Parcelize
 data class CompletedFiszka(val fiszka: Fiszka, val isSuccess: Boolean) : Parcelable

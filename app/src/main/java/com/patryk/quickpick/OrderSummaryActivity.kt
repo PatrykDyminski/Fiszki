@@ -43,22 +43,6 @@ class OrderSummaryActivity : AppCompatActivity() {
 
         val finishButton: Button = findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
-
-            val status: OrderStatus = when {
-                summary!!.failedFiszkas.isEmpty() -> {
-                    OrderStatus.SUCCESS
-                }
-                summary.completedFiszkas.isEmpty() -> {
-                    OrderStatus.FAIL
-                }
-                else -> {
-                    OrderStatus.MIXED
-                }
-            }
-
-            DemoDataContent.PAST_ORDERS.add(PastOrder(summary.listaFiszek, status))
-            DemoDataContent.ListaFiszek.remove(summary.listaFiszek)
-
             val intent = Intent(this, ListaListFiszekActivity::class.java)
             startActivity(intent)
         }
@@ -76,7 +60,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         : RecyclerView.Adapter<CompletedItemsAdapter.ViewHolder>() {
 
         init {
-            fiszkas = fiszkas.sortedBy { !it.isSuccess }
+            fiszkas = fiszkas.sortedBy { it.fiszka.status }
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -97,11 +81,17 @@ class OrderSummaryActivity : AppCompatActivity() {
             holder.name.text = item.fiszka.word
             holder.translation.text = item.fiszka.translation
 
-            if(!item.isSuccess){
-                holder.statusImg.setImageResource(R.drawable.ic_failed)
-                holder.statusImg.setColorFilter(Color.RED)
-            }else{
-                holder.statusImg.setColorFilter(Color.GREEN)
+            when (item.fiszka.status) {
+                LearnStatus.NOT_LEARNED -> {
+                    holder.statusImg.setImageResource(R.drawable.ic_failed)
+                    holder.statusImg.setColorFilter(Color.RED)
+                }
+                LearnStatus.MIXED -> {
+                    holder.statusImg.setColorFilter(Color.YELLOW)
+                }
+                else -> {
+                    holder.statusImg.setColorFilter(Color.GREEN)
+                }
             }
         }
 
