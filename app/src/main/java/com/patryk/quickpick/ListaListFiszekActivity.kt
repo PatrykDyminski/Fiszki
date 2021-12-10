@@ -22,6 +22,7 @@ import com.patryk.quickpick.ui.orderdetail.OrderDetailFragment
 import java.io.File
 import java.util.*
 
+@ExperimentalStdlibApi
 class ListaListFiszekActivity : AppCompatActivity() {
 
     private var twoPane: Boolean = false

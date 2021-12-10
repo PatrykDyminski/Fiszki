@@ -17,6 +17,7 @@ import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.LearnStatus
 import com.patryk.quickpick.data.ListaFiszek
 
+@ExperimentalStdlibApi
 class NewListActivity : AppCompatActivity() {
 
     private lateinit var ROWS: MutableList<Pair<EditText, EditText>>
@@ -97,7 +98,7 @@ class NewListActivity : AppCompatActivity() {
         else -> super.onOptionsItemSelected(item)
     }
 
-    fun addRow(){
+    private fun addRow(){
         val rowsLayout = findViewById<LinearLayout>(R.id.rows)
         val view: View = LayoutInflater.from(this).inflate(R.layout.new_list_row, null)
 
@@ -117,7 +118,7 @@ class NewListActivity : AppCompatActivity() {
         rowsLayout.addView(view)
     }
 
-    fun addRow(fiszka: Fiszka){
+    private fun addRow(fiszka: Fiszka){
         val rowsLayout = findViewById<LinearLayout>(R.id.rows)
         val view: View = LayoutInflater.from(this).inflate(R.layout.new_list_row, null)
 
