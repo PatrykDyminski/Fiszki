@@ -11,10 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.patryk.quickpick.OrderDetailActivity
-import com.patryk.quickpick.PickProcessActivity
-import com.patryk.quickpick.R
-import com.patryk.quickpick.TestProcessActivity
+import com.patryk.quickpick.*
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.ListaFiszek
@@ -80,6 +77,16 @@ class OrderDetailFragment : Fragment() {
             }
             context?.startActivity(intent)
         }
+
+        val edit: Button = rootView.findViewById(R.id.editBtn)
+        edit.setOnClickListener {
+            val intent = Intent(context, NewListActivity::class.java).apply {
+                putExtra("XDD", listaFiszek.name)
+            }
+            context?.startActivity(intent)
+        }
+
+
     }
 
     companion object {

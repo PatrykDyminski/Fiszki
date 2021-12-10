@@ -91,6 +91,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/collectionName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:text="Dotknij fiszki, aby ją obrócić!"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/wordLabel"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/learnLevelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

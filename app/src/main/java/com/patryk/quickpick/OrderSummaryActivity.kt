@@ -87,10 +87,10 @@ class OrderSummaryActivity : AppCompatActivity() {
                     holder.statusImg.setColorFilter(Color.RED)
                 }
                 LearnStatus.MIXED -> {
-                    holder.statusImg.setColorFilter(Color.YELLOW)
+                    holder.statusImg.setColorFilter(Color.parseColor("#03fc24"))
                 }
                 else -> {
-                    holder.statusImg.setColorFilter(Color.GREEN)
+                    holder.statusImg.setColorFilter(Color.parseColor("#f4fc03"))
                 }
             }
         }

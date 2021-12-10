@@ -44,6 +44,9 @@ class PickProcessFragment : Fragment() {
         val view =  inflater.inflate(R.layout.fragment_pick_process, container, false)
         fragmentView = view
 
+        val nameLabel = view.findViewById<TextView>(R.id.collectionName)
+        nameLabel.text = listaFiszek.name
+
         viewModel.setupProcess(listaFiszek)
         val item = viewModel.getCurrentlyProcessedFiszka()
 
