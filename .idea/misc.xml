@@ -14,7 +14,7 @@
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout-w900dp/activity_new_list.xml" value="0.22" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_item_list.xml" value="0.21302083333333333" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_main_page.xml" value="0.18" />
-        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_new_list.xml" value="0.17" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_new_list.xml" value="0.25" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_order_detail.xml" value="0.18388157894736842" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_order_list.xml" value="0.22" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/activity_order_summary.xml" value="0.36666666666666664" />
@@ -28,7 +28,7 @@
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_completed_test_item.xml" value="0.5" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_item_in_order.xml" value="0.5" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/content_order_list.xml" value="0.5" />
-        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/fragment_order_detail.xml" value="0.25" />
+        <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/fragment_order_detail.xml" value="0.22" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/fragment_pick_process.xml" value="0.25" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/fragment_test_process.xml" value="0.25" />
         <entry key="..\:/Users/Patryk/AndroidStudioProjects/Fiszki/app/src/main/res/layout/new_list_row.xml" value="0.19046052631578947" />

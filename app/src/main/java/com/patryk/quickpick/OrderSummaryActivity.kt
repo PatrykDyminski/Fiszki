@@ -48,7 +48,7 @@ class OrderSummaryActivity : AppCompatActivity() {
         }
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = CompletedItemsAdapter(items)
+        viewAdapter = CompletedItemsAdapter(items.distinctBy { it.fiszka.word })
         recyclerView = this.findViewById<RecyclerView>(R.id.completedItems).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
@@ -87,10 +87,10 @@ class OrderSummaryActivity : AppCompatActivity() {
                     holder.statusImg.setColorFilter(Color.RED)
                 }
                 LearnStatus.MIXED -> {
-                    holder.statusImg.setColorFilter(Color.parseColor("#03fc24"))
+                    holder.statusImg.setColorFilter(Color.parseColor("#f4fc03"))
                 }
                 else -> {
-                    holder.statusImg.setColorFilter(Color.parseColor("#f4fc03"))
+                    holder.statusImg.setColorFilter(Color.parseColor("#03fc24"))
                 }
             }
         }
