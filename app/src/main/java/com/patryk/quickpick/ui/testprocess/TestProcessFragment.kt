@@ -79,6 +79,9 @@ class TestProcessFragment : Fragment() {
     }
 
     private fun goToSummary() {
+        DemoDataContent.LastCollectionNames.remove(listaFiszek.name)
+        DemoDataContent.LastCollectionNames.add(listaFiszek.name)
+
         val summary = viewModel.getSummary()
         val intent = Intent(context, TestSummaryActivity::class.java).apply {
             putExtra(TEST_SUMMARY, summary)

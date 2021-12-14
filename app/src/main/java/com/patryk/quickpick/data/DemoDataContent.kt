@@ -9,6 +9,8 @@ object DemoDataContent {
     var PAST_ORDERS: MutableList<PastOrder> = ArrayList()
     var Fiszkas: MutableList<Fiszka> = ArrayList()
 
+    var LastCollectionNames: MutableList<String> = ArrayList()
+
     private const val COUNT = 15
 
     init {
@@ -26,6 +28,7 @@ object DemoDataContent {
     private fun addOrder(listaFiszek: ListaFiszek) {
         ListaFiszek.add(listaFiszek)
         ListaFiszekFull.add(listaFiszek)
+        LastCollectionNames.add(listaFiszek.name)
     }
 
     fun createOrder(position: Int): ListaFiszek {

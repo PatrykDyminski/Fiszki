@@ -14,7 +14,6 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.patryk.quickpick.data.*
-import com.patryk.quickpick.ui.pickprocess.PickProcessFragment
 import com.patryk.quickpick.ui.testprocess.TestProcessFragment
 
 @ExperimentalStdlibApi
@@ -40,7 +39,7 @@ class TestSummaryActivity : AppCompatActivity() {
 
         val finishButton: Button = findViewById(R.id.finishButton)
         finishButton.setOnClickListener {
-            val intent = Intent(this, ListaListFiszekActivity::class.java)
+            val intent = Intent(this, MainPageActivity::class.java)
             startActivity(intent)
         }
 

@@ -22,10 +22,15 @@ class MainPageActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        val name1 = DemoDataContent.LastCollectionNames.last()
+        val name2 = DemoDataContent.LastCollectionNames[DemoDataContent.LastCollectionNames.size - 2]
+        val name3 = DemoDataContent.LastCollectionNames[DemoDataContent.LastCollectionNames.size - 3]
+        val name4 = DemoDataContent.LastCollectionNames[DemoDataContent.LastCollectionNames.size - 4]
+
         val testBtn: Button = findViewById(R.id.testBtn)
         testBtn.setOnClickListener {
             val intent = Intent(this, TestProcessActivity::class.java).apply {
-                putExtra(OrderDetailFragment.ARG_ORDER_ID, DemoDataContent.ListaFiszekFull[0].name)
+                putExtra(OrderDetailFragment.ARG_ORDER_ID, name1)
             }
             startActivity(intent)
         }
@@ -33,7 +38,7 @@ class MainPageActivity : AppCompatActivity() {
         val studyBtn: Button = findViewById(R.id.studyBtn)
         studyBtn.setOnClickListener {
             val intent = Intent(this, PickProcessActivity::class.java).apply {
-                putExtra(OrderDetailFragment.ARG_ORDER_ID, DemoDataContent.ListaFiszekFull[0].name)
+                putExtra(OrderDetailFragment.ARG_ORDER_ID, name1)
             }
             startActivity(intent)
         }
@@ -51,37 +56,37 @@ class MainPageActivity : AppCompatActivity() {
         }
 
         val col1: TextView = findViewById(R.id.col1)
-        col1.text = DemoDataContent.ListaFiszekFull[0].name
+        col1.text = name1
         col1.setOnClickListener {
             val intent = Intent(this, OrderDetailActivity::class.java).apply {
-                putExtra(OrderDetailFragment.ARG_ORDER_ID, DemoDataContent.ListaFiszekFull[0].name)
+                putExtra(OrderDetailFragment.ARG_ORDER_ID, name1)
             }
             startActivity(intent)
         }
 
         val col2: TextView = findViewById(R.id.col2)
-        col2.text = DemoDataContent.ListaFiszekFull[1].name
+        col2.text = name2
         col2.setOnClickListener {
             val intent = Intent(this, OrderDetailActivity::class.java).apply {
-                putExtra(OrderDetailFragment.ARG_ORDER_ID, DemoDataContent.ListaFiszekFull[1].name)
+                putExtra(OrderDetailFragment.ARG_ORDER_ID, name2)
             }
             startActivity(intent)
         }
 
         val col3: TextView = findViewById(R.id.col3)
-        col3.text = DemoDataContent.ListaFiszekFull[2].name
+        col3.text = name3
         col3.setOnClickListener {
             val intent = Intent(this, OrderDetailActivity::class.java).apply {
-                putExtra(OrderDetailFragment.ARG_ORDER_ID, DemoDataContent.ListaFiszekFull[2].name)
+                putExtra(OrderDetailFragment.ARG_ORDER_ID, name3)
             }
             startActivity(intent)
         }
 
         val col4: TextView = findViewById(R.id.col4)
-        col4.text = DemoDataContent.ListaFiszekFull[3].name
+        col4.text = name4
         col4.setOnClickListener {
             val intent = Intent(this, OrderDetailActivity::class.java).apply {
-                putExtra(OrderDetailFragment.ARG_ORDER_ID, DemoDataContent.ListaFiszekFull[3].name)
+                putExtra(OrderDetailFragment.ARG_ORDER_ID, name4)
             }
             startActivity(intent)
         }

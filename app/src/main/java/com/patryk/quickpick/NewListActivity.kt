@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
+import com.google.android.material.snackbar.Snackbar
 import com.patryk.quickpick.data.DemoDataContent
 import com.patryk.quickpick.data.Fiszka
 import com.patryk.quickpick.data.LearnStatus
@@ -78,16 +79,40 @@ class NewListActivity : AppCompatActivity() {
         val colName: EditText = findViewById(R.id.collectionNameInput)
         val listaFiszek = ListaFiszek(colName.text.toString(), fiszki)
 
-        if(isEdit){
-            DemoDataContent.ListaFiszek.removeIf { it.name == colEditName }
-            DemoDataContent.ListaFiszekFull.removeIf { it.name == colEditName }
+        val contextView = findViewById<View>(R.id.scroll)
+
+        when {
+            listaFiszek.name.isBlank() -> {
+                Snackbar
+                    .make(contextView, "Nie można zapisać listy bez nazwy", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+            listaFiszek.fiszkas.isEmpty() -> {
+                Snackbar
+                    .make(contextView, "Nie można zapisać pustej kolekcji", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+            listaFiszek.fiszkas.any { it.word.isBlank() || it.translation.isBlank() } -> {
+                Snackbar
+                    .make(contextView, "Nie można zapisać kolekcji zawierającej puste słowa", Snackbar.LENGTH_SHORT)
+                    .show()
+            }
+            else -> {
+                if(isEdit){
+                    DemoDataContent.ListaFiszek.removeIf { it.name == colEditName }
+                    DemoDataContent.ListaFiszekFull.removeIf { it.name == colEditName }
+                }
+
+                DemoDataContent.ListaFiszek.add(listaFiszek)
+                DemoDataContent.ListaFiszekFull.add(listaFiszek)
+
+                DemoDataContent.LastCollectionNames.remove(listaFiszek.name)
+                DemoDataContent.LastCollectionNames.add(listaFiszek.name)
+
+                val intent = Intent(this, MainPageActivity::class.java)
+                startActivity(intent)
+            }
         }
-
-        DemoDataContent.ListaFiszek.add(listaFiszek)
-        DemoDataContent.ListaFiszekFull.add(listaFiszek)
-
-        val intent = Intent(this, ListaListFiszekActivity::class.java)
-        startActivity(intent)
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {

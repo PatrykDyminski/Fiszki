@@ -144,7 +144,6 @@ class ListaListFiszekActivity : AppCompatActivity() {
         recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DemoDataContent.ListaFiszek, twoPane)
     }
 
-    @OptIn(ExperimentalStdlibApi::class)
     class SimpleItemRecyclerViewAdapter(
         private val parentActivity: ListaListFiszekActivity,
         private val values: List<ListaFiszek>,

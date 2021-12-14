@@ -103,6 +103,9 @@ class PickProcessFragment : Fragment() {
     }
 
     private fun goToSummary() {
+        DemoDataContent.LastCollectionNames.remove(listaFiszek.name)
+        DemoDataContent.LastCollectionNames.add(listaFiszek.name)
+
         val summary = viewModel.getSummary()
         val intent = Intent(context, OrderSummaryActivity::class.java).apply {
             putExtra(ORDER_SUMMARY, summary)
