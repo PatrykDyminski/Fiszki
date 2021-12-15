@@ -14,15 +14,92 @@ object DemoDataContent {
     private const val COUNT = 15
 
     init {
-        for (i in 1..COUNT) {
+
+        addKolekcja("Pojazdy", mutableListOf(
+            Fiszka("car", "samochód", LearnStatus.NOT_LEARNED),
+            Fiszka("plane", "samolot", LearnStatus.NOT_LEARNED),
+            Fiszka("train", "pociąg", LearnStatus.NOT_LEARNED),
+            Fiszka("bike", "rower", LearnStatus.NOT_LEARNED),
+            Fiszka("helicopter", "helikopter", LearnStatus.NOT_LEARNED),
+            Fiszka("boat", "łódź", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Zwierzęta", mutableListOf(
+            Fiszka("dog", "pies", LearnStatus.NOT_LEARNED),
+            Fiszka("owl", "sowa", LearnStatus.NOT_LEARNED),
+            Fiszka("lion", "lew", LearnStatus.NOT_LEARNED),
+            Fiszka("tiger", "tygrys", LearnStatus.NOT_LEARNED),
+            Fiszka("cow", "krowa", LearnStatus.NOT_LEARNED),
+            Fiszka("cat", "kangur", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Zawody", mutableListOf(
+            Fiszka("carpenter", "stolarz", LearnStatus.NOT_LEARNED),
+            Fiszka("actor", "aktor", LearnStatus.NOT_LEARNED),
+            Fiszka("accountant", "księgowy", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Dom", mutableListOf(
+            Fiszka("room", "pokój", LearnStatus.NOT_LEARNED),
+            Fiszka("bathroom", "łazienka", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Zdrowie", mutableListOf(
+            Fiszka("doctor", "lekarz", LearnStatus.NOT_LEARNED),
+            Fiszka("vaccine", "szczepionka", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Sztuka", mutableListOf(
+            Fiszka("painting", "obraz", LearnStatus.NOT_LEARNED),
+            Fiszka("sculpture", "rzeźba", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Kino", mutableListOf(
+            Fiszka("movie", "film", LearnStatus.NOT_LEARNED),
+            Fiszka("rating", "ocena", LearnStatus.NOT_LEARNED)
+        ))
+        addKolekcja("Studia", mutableListOf(
+            Fiszka("exam", "egzamin", LearnStatus.NOT_LEARNED)
+        ))
+
+        for (i in 10..COUNT) {
             addOrder(createOrder(i))
         }
 
-        PAST_ORDERS.add(PastOrder(createOrder(16),OrderStatus.FAIL))
-        PAST_ORDERS.add(PastOrder(createOrder(17),OrderStatus.SUCCESS))
-        PAST_ORDERS.add(PastOrder(createOrder(18),OrderStatus.MIXED))
-        PAST_ORDERS.add(PastOrder(createOrder(19),OrderStatus.FAIL))
-        PAST_ORDERS.add(PastOrder(createOrder(20),OrderStatus.SUCCESS))
+        addKolekcja("Media", mutableListOf(
+            Fiszka("newspaper", "gazeta", LearnStatus.NOT_LEARNED),
+            Fiszka("radio", "radio", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Ciało", mutableListOf(
+            Fiszka("shoulder blade", "łopatka", LearnStatus.NOT_LEARNED),
+            Fiszka("hip", "biodro", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Kuchnia", mutableListOf(
+            Fiszka("oven", "piekarnik", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("łazienka", mutableListOf(
+            Fiszka("shower", "prysznic", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Banana", mutableListOf(
+            Fiszka("banana", "banan", LearnStatus.NOT_LEARNED)
+        ))
+
+        addKolekcja("Warzywa", mutableListOf(
+            Fiszka("cucumber", "ogórek", LearnStatus.NOT_LEARNED)
+        ))
+
+
+    }
+
+    private fun addKolekcja(name: String, fiszki: MutableList<Fiszka>){
+        val zwierzLista = ListaFiszek(name, fiszki)
+        ListaFiszek.add(zwierzLista)
+        ListaFiszekFull.add(zwierzLista)
+        LastCollectionNames.add(zwierzLista.name)
     }
 
     private fun addOrder(listaFiszek: ListaFiszek) {
