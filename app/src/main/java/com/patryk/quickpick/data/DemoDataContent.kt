@@ -84,7 +84,7 @@ object DemoDataContent {
             Fiszka("shower", "prysznic", LearnStatus.NOT_LEARNED)
         ))
 
-        addKolekcja("Banana", mutableListOf(
+        addKolekcja("Owoce", mutableListOf(
             Fiszka("banana", "banan", LearnStatus.NOT_LEARNED)
         ))
 
