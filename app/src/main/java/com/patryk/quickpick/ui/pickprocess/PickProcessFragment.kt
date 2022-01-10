@@ -1,6 +1,8 @@
 package com.patryk.quickpick.ui.pickprocess
 
+import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,11 +22,8 @@ import com.patryk.quickpick.data.ListaFiszek
 class PickProcessFragment : Fragment() {
 
     private val viewModel: PickProcessViewModel by viewModels()
-
     private lateinit var fragmentView : View
-
     private lateinit var listaFiszek: ListaFiszek
-
     private lateinit var currentFiszka: Fiszka
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,7 +77,7 @@ class PickProcessFragment : Fragment() {
 
         val end: Button = view.findViewById(R.id.nextButton)
         end.setOnClickListener {
-            goToSummary()
+            displayPopup()
         }
 
         val fiszka: TextView = view.findViewById(R.id.wordLabel)
@@ -102,7 +101,24 @@ class PickProcessFragment : Fragment() {
         }
     }
 
-    private fun goToSummary() {
+    private fun displayPopup(){
+        val dialog = AlertDialog.Builder(context)
+            .setTitle("Achtung")
+            .setMessage("Czy na pewno chcesz zakończyć naukę??????")
+            .setPositiveButton("TAK")
+            { _, _ ->
+                goToSummary()
+            }
+            .setNegativeButton("NIE")
+            { _, _ ->
+
+            }
+            .show()
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+    }
+
+    private fun goToSummary(){
         DemoDataContent.LastCollectionNames.remove(listaFiszek.name)
         DemoDataContent.LastCollectionNames.add(listaFiszek.name)
 
