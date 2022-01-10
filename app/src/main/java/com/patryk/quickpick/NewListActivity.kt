@@ -35,6 +35,8 @@ class NewListActivity : AppCompatActivity() {
 
         ROWS = ArrayList()
 
+        val colEdit: EditText = findViewById(R.id.collectionNameInput)
+
         val colName = intent.getStringExtra("XDD")
         if(colName != null){
             isEdit = true
@@ -42,7 +44,6 @@ class NewListActivity : AppCompatActivity() {
 
             supportActionBar?.title = "Edytuj Kolekcje"
 
-            val colEdit: EditText = findViewById(R.id.collectionNameInput)
             colEdit.setText(colName)
 
             val fiszki = DemoDataContent.ListaFiszekFull.find { it.name == colName }
@@ -54,6 +55,7 @@ class NewListActivity : AppCompatActivity() {
         }else{
             //First row
             addRow()
+            colEdit.requestFocus()
         }
 
         val finishButton: ExtendedFloatingActionButton = findViewById(R.id.saveListFab)
@@ -139,8 +141,9 @@ class NewListActivity : AppCompatActivity() {
         }
 
         ROWS.add(pair)
-
         rowsLayout.addView(view)
+
+        word.requestFocus()
     }
 
     private fun addRow(fiszka: Fiszka){
