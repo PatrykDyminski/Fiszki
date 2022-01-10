@@ -71,13 +71,13 @@ class NewListActivity : AppCompatActivity() {
         val fiszki = ArrayList<Fiszka>()
 
         ROWS.forEach { pair ->
-            val wordString = pair.first.text.toString()
-            val transString = pair.second.text.toString()
+            val wordString = pair.first.text.toString().trim()
+            val transString = pair.second.text.toString().trim()
             fiszki.add(Fiszka(wordString, transString, LearnStatus.NOT_LEARNED))
         }
 
         val colName: EditText = findViewById(R.id.collectionNameInput)
-        val listaFiszek = ListaFiszek(colName.text.toString(), fiszki)
+        val listaFiszek = ListaFiszek(colName.text.toString().trim(), fiszki)
 
         val contextView = findViewById<View>(R.id.scroll)
 

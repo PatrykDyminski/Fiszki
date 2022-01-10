@@ -53,7 +53,6 @@ class TestProcessFragment : Fragment() {
     }
 
     private fun assignButtons(){
-
         val nextButton: Button = fragmentView.findViewById(R.id.nextButton)
         nextButton.setOnClickListener {
             handleNextWord()
@@ -61,10 +60,9 @@ class TestProcessFragment : Fragment() {
     }
 
     private fun handleNextWord(){
-
         val input: EditText = fragmentView.findViewById(R.id.translation_input)
-        val answer = input.text.toString()
-        var correct = currentFiszka.translation.equals(answer, ignoreCase = true)
+        val answer = input.text.toString().trim()
+        val correct = currentFiszka.translation.equals(answer, ignoreCase = true)
         val testFiszka = TestFiszka(currentFiszka, answer, WordType.ORIGINAL, correct)
 
         viewModel.nextWord(testFiszka)
